@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AlAmineAcademy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device+width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <!--- ===== Slick-Required_JQuery ===== ---->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!--- ===== My static files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/aboutUs.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/course.css' %}" />
+    <!--- ===== Slick-css-files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick-theme.css' %}" />
+</head>
+
+<body>
+
+    <div class="dropdown">
+        <nav>
+            <a href="#Home"><img src="{% static 'academy/img/logo.png' %}" alt="logo" class="logo" /></a>
+            <ul>
+                <li><a href="{% url 'homePage' %}">Home</a></li>
+                <li><a href="{% url 'aboutUsPage' %}">About Us</a></li>
+                <li><a href="#Courses">Courses</a>
+                    <ul>
+                        <li><a href="{% url 'coursePage' %}">Course 01</a></li>
+                        <li><a href="#{% url 'coursePage' %}">Course 02</a></li>
+                        <li><a href="#{% url 'coursePage' %}">Course 03</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Resources">Resources</a>
+                    <ul>
+                        <li><a href="#Resource01">Resource 01</a></li>
+                        <li><a href="#Resource02">Resource 02</a></li>
+                        <li><a href="#Resource03">Resource 03</a></li>
+                        <li><a href="#Resource04">Resource 04</a></li>
+                    </ul>
+                </li>
+                <li><a href="#QA">Question/Answer</a>
+                    <ul>
+                        <li><a href="#QPublic">Question Public</a></li>
+                        <li><a href="#QPrivate">Question Private</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <footer class="bottom_line">
+
+    </footer>
+    
+    <script type="text/javascript" src="{% static 'academy/js/myScript.js' %}"></script>
+    <script type="text/javascript" src="{% static 'academy/slick/slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'academy/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'academy/js/script.js' %}"></script>
+</body>
+
+</html>

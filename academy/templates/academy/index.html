@@ -1,0 +1,233 @@
+{% extends "academy/base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+    <div class="galleryContainer">
+        <div class="slideShowContainer">
+            <div id="playPausen"></div>
+            <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+            <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+            <div class="captionTextHolder">
+                <p class="captionText slideTextFromTop"></p>
+            </div>
+            <div class="imageHolder">
+                <img src="{% static 'academy/img/bg9.jpg' %}">1366X768
+                <p class="captionText">Caption Text-01</p>
+            </div>
+            <div class="imageHolder">
+                <img src="{% static 'academy/img/bg5.jpg' %}">
+                <p class="captionText">Caption Text-02</p>
+            </div>
+            <div class="imageHolder">
+                <img src="{% static 'academy/img/bg3.jpg' %}">
+                <p class="captionText">Caption Text-03</p>
+            </div>
+            <div class="imageHolder">
+                <img src="{% static 'academy/img/bg4.jpg' %}">
+                <p class="captionText">Caption Text-04</p>
+            </div>
+        </div>
+        <div id="dotsContainer"></div>
+    </div>
+
+    <div class="research_bar">
+        <form action="" method="GET">
+            <input type="text" name="research" placeholder="Search..." />
+        </form>
+
+        <ul class="qux">
+            <li><a href="#">Login</a></li>
+            <p>/</p>
+            <li><a href="#">Register</a></li>
+        </ul>
+    </div>
+
+    <div class="wrapper">
+        <div class="programs">
+            <h2>Programs</h2>
+            <div class="program_column01">
+                <div class="program_card">
+                    <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
+                    <h3><a href="#">Fiqh</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+                <div class="program_card">
+                    <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
+                    <h3><a href="#">Tahwid</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+                <div class="program_card">
+                    <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
+                    <h3><a href="#">Tafsir</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+            </div>
+            <div class="program_column02">
+                <div class="program_card">
+                    <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
+                    <h3><a href="#">Khutbahs</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+                <div class="program_card">
+                    <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
+                    <h3><a href="#">Bayane</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+                <div class="program_card">
+                    <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
+                    <h3><a href="#">Seerah</a></h3>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="about_us">
+            <div class="about_us_img">
+                <img src="{% static 'academy/img/bg2.jpg' %}" alt="bg2" class="bg2">
+                <img src="{% static 'academy/img/logo.png' %}" alt="Al Amine Academy" class="about_us_logo">
+            </div>
+            <div class="about_us_section">
+                <h2>Al Amine Academy</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Est placerat in egestas erat. Convallis convallis tellus
+                    id interdum. A diam maecenas sed enim ut. Nisl suscipit adipiscing bibendum est. Feugiat in ante metus dictum at. Etiam erat velit scelerisque in dictum non. Non diam phasellus vestibulum lorem sed risus. In arcu cursus euismod quis
+                    viverra nibh cras pulvinar mattis. Sit amet risus nullam eget felis eget nunc lobortis mattis. Congue mauris rhoncus aenean vel elit. Arcu odio ut sem nulla pharetra diam. Commodo nulla facilisi nullam vehicula ipsum a arcu.
+                </p>
+                <p>Cursus mattis molestie a iaculis at erat. Leo urna molestie at elementum eu facilisis sed odio morbi. Volutpat lacus laoreet non curabitur gravida arcu ac tortor. Nunc consequat interdum varius sit amet mattis vulputate enim. Facilisi
+                    etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Ante metus dictum at tempor commodo ullamcorper a. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Tempor id eu nisl nunc. Purus semper
+                    eget duis at.
+                </p>
+                <p> Ipsum nunc aliquet bibendum enim facilisis gravida neque. Et tortor consequat id porta nibh. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Leo in vitae turpis massa sed. Purus ut faucibus pulvinar elementum integer
+                    enim. Vestibulum lectus mauris ultrices eros in cursus turpis. Ut placerat orci nulla pellentesque dignissim enim sit amet. Egestas maecenas pharetra convallis posuere morbi. Lobortis elementum nibh tellus molestie nunc non. Iaculis
+                    urna id volutpat lacus. Aliquam ut porttitor leo a. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique.
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="slick_slider">
+            <!-------Slide 01-------->
+            <!----Slider Box---->
+            <div class="card">
+                <video controls class="box_video">
+                    <source src="{% static 'academy/img/video.mp4' %}" type="video/mp4">
+                </video>
+                <div class="box_container">
+                    <h4><b>Title</b></h4>
+                    <p class="video_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="daily_hadith_section">
+        <h1>Daily Hadith</h1>
+        <div class="hadith_section">
+            <div class="hadith_text">
+
+            </div>
+            <div class="hadith_document">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="top_container02">
+        <h1>Miscelleneous</h1>
+        <div class="container">
+            <div class="slick_slider">
+                <!-------Slide 01-------->
+                <!----Slider Box---->
+                <div class="card">
+                    <video controls class="box_video">
+                        <source src="{% static 'academy/img/video.mp4' %}" type="video/mp4">
+                    </video>
+                    <div class="box_container">
+                        <h4><b>Title</b></h4>
+                        <p class="video_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+
+    <div class="playlist_audio">
+        <h1>Playlist Audios</h1>
+        <div class="playlist_box">
+            <ul id="playlist">
+                <li class="playlist-item" onclick="playPause(0)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title audio_li"> The Title </span>
+                    <span class="audio_description audio_li"> ... The audio description ...</span>
+                    <span class="audio_duration audio_li"> 00:43</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(1)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 01:03</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(2)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 10:00</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(3)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 45:20</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(4)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 00:10</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(5)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 00:43</span>
+                </li>
+            </ul>
+            <div class="audio_box">
+                <div id="image">
+                    <img src="{% static 'academy/img/bg.jpg' %}" alt="audio-image">
+                </div>
+                <div id="player">
+                    <div id="songTitle">Hello World</div>
+                    <div id="audio_btns">
+                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" height="20px" width="20px"></button>
+                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
+                        <button id="next"><img src="{% static 'academy/img/next.png' %}" height="20px" width="20px"></button>
+                    </div>
+                    <div id="seek-bar">
+                        <div id="fill"></div>
+                        <div id="handle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}
