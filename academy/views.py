@@ -135,8 +135,6 @@ class YoutubeApi:
             current_playlist = self._videoTitle_playlist[v_title]
             (self._playlistTitle_videos[current_playlist]).append({'title':v_title, 'description':g["description"], 'url':g["url"]})
         
-        print("playlistTitle: ",self._playlistTitle_videos)
-        print()
         
         for (v_title, p_title) in zip(self._videos_titles, self._playlist_titles):
             vv_title, pp_title = v_title.lower(), p_title.lower()
