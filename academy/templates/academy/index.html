@@ -120,18 +120,18 @@
         <div class="slick_slider">
             <!-------Slide 01-------->
             <!----Slider Box---->
-            <div class="card">
-                <video controls class="box_video">
-                    <source src="{% static 'academy/img/video.mp4' %}" type="video/mp4">
-                </video>
-                <div class="box_container">
-                    <h4><b>Title</b></h4>
-                    <p class="video_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    </p>
+            {% for playlist in playlists %}
+                <div class="card">
+                    <video controls class="box_video">
+                        <source src="{{ playlist.player.url }}" type="video/mp4">
+                    </video>
+                    <div class="box_container">
+                        <h4><b>{{ playlist.snippet.title }}</b></h4>
+                        <p class="video_description">{{ playlist.snippet.description }}</p>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-
     </div>
 
     <div class="daily_hadith_section">
