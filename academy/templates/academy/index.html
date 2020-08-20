@@ -122,9 +122,9 @@
             <!----Slider Box---->
             {% for playlist in playlists %}
                 <div class="card">
-                    <video controls class="box_video">
-                        <source src="{{ playlist.player.url }}" type="video/mp4">
-                    </video>
+                    <iframe controls class="box_video" src="{{ playlist.player.url }}" style="border:none;">
+                        {% comment %} <source src="{{ playlist.player.url }}" type="video/mp4"> {% endcomment %}
+                    </iframe>
                     <div class="box_container">
                         <h4><b>{{ playlist.snippet.title }}</b></h4>
                         <p class="video_description">{{ playlist.snippet.description }}</p>

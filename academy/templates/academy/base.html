@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/aboutUs.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/course.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/ressource.css' %}" />
     <!--- ===== Slick-css-files ===== ---->
     <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick-theme.css' %}" />
@@ -33,11 +34,11 @@
                 <li><a href="#Courses">Courses</a>
                     <ul>
                         <li><a href="{% url 'coursePage' %}">Course 01</a></li>
-                        <li><a href="#{% url 'coursePage' %}">Course 02</a></li>
-                        <li><a href="#{% url 'coursePage' %}">Course 03</a></li>
+                        <li><a href="{% url 'coursePage' %}">Course 02</a></li>
+                        <li><a href="{% url 'coursePage' %}">Course 03</a></li>
                     </ul>
                 </li>
-                <li><a href="#Resources">Resources</a>
+                <li><a href="{% url 'ressourcePage' 'péhé' %}">Resources</a>
                     <ul>
                         <li><a href="#Resource01">Resource 01</a></li>
                         <li><a href="#Resource02">Resource 02</a></li>
@@ -65,6 +66,7 @@
     <script type="text/javascript" src="{% static 'academy/slick/slick.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'academy/js/ressource.js' %}"></script>
 </body>
 
 </html>

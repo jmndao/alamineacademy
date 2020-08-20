@@ -1,0 +1,254 @@
+{% extends "academy/base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="image-view">
+        <div id="academy">
+            <p>Ressource</p>
+        </div>
+        <img src="{% static 'academy/img/bg6.jpg' %}" alt="AlAmineAcademy">
+    </div>
+
+    <div class="ressource-title">
+        <p>Ressource 01</p>
+    </div>
+
+    <div class="video-gallery__screen">
+    {% if is_video %}
+        <div class="video-screen-wrapper">
+            <iframe src="{{ video.url }}" id="video-screen" style="border:none;"></iframe>
+        </div>
+        <div class="video-gallery">
+            {% for vid in playlist %}
+                <div class="card video-gallery__card">
+                    <iframe controls class="box_video" src="{{ vid.url }}" style="border:none;" onclick="drag_up(this)"></iframe>
+                    <div class="box_container video-gallery__box_container">
+                        <h4><b>{{vid.title}}</b></h4>
+                        <p class="video_description">{{vid.description|truncatewords:10}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="video-gallery__controls pagination">
+                {% if playlist.has_previous %}
+                    <button class="video_prev"><a href="?page={{ playlist.previous_page_number }}">Prev</a></button>
+                {% else %}
+                    <button class="video_prev deactivate"><a href="#">Prev</a></button>
+                {% endif %}
+                {% for num in page_num %}
+                    <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
+                    {% if num == 3 %}
+                        <button class="pagination_btn pg_btn_activate">...</button>
+                    {% endif %}
+                {% endfor %}
+                {% if playlist.has_next %}
+                    <button class="video_next"><a href="?page={{ playlist.next_page_number }}">Next</a></button>            
+                {% else %}
+                    <button class="video_next deactivate"><a href="#">Next</a></button>
+                {% endif %}
+            </div>
+         </div>
+    {% else %}
+            <div class="video-screen-wrapper">
+                <iframe src="{{ a_video.url }}" id="video-screen" style="border:none;"></iframe>
+            </div>
+            <div class="video-gallery">
+                {% for vid in videos %}
+                    <div class="card video-gallery__card">
+                        <iframe controls class="box_video" src="{{ vid.url }}" style="border:none;" onclick="drag_up(this)"></iframe>
+                        <div class="box_container video-gallery__box_container">
+                            <h4><b>{{vid.title}}</b></h4>
+                            <p class="video_description">{{vid.description|truncatewords:10}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="video-gallery__controls pagination">
+                {% if videos.has_previous %}
+                    <button class="video_prev"><a href="?page={{ videos.previous_page_number }}">Prev</a></button>
+                {% else %}
+                    <button class="video_prev deactivate"><a href="#">Prev</a></button>
+                {% endif %}
+                {% for num in page_num %}
+                    <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
+                    {% if num == 3 %}
+                        <button class="pagination_btn pg_btn_activate">...</button>
+                    {% endif %}
+                {% endfor %}
+                {% if videos.has_next %}
+                    <button class="video_next"><a href="?page={{ videos.next_page_number }}">Next</a></button>            
+                {% else %}
+                    <button class="video_next deactivate"><a href="#">Next</a></button>
+                {% endif %}
+            </div>
+    {% endif %}
+        
+    </div>
+
+        
+
+    </div>
+
+    <div class="playlist_audio">
+        <h1>Playlist Audios</h1>
+        <div class="playlist_box">
+            <ul id="playlist">
+                <li class="playlist-item" onclick="playPause(0)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title audio_li"> The Title </span>
+                    <span class="audio_description audio_li"> ... The audio description ...</span>
+                    <span class="audio_duration audio_li"> 00:43</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(1)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 01:03</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(2)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 10:00</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(3)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 45:20</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(4)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 00:10</span>
+                </li>
+                <li class="playlist-item" onclick="playPause(5)">
+                    <i class="fa fa-play-circle fa-lg"></i>
+                    <span class="audio_title"> The Title </span>
+                    <span class="audio_description"> ... The audio description ...</span>
+                    <span class="audio_duration"> 00:43</span>
+                </li>
+            </ul>
+            <div class="audio_box">
+                <div id="image">
+                    <img src="{% static 'academy/img/bg.jpg' %}" alt="audio-image">
+                </div>
+                <div id="player">
+                    <div id="songTitle">Hello World</div>
+                    <div id="audio_btns">
+                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" height="20px" width="20px"></button>
+                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
+                        <button id="next"><img src="{% static 'academy/img/next.png' %}" height="20px" width="20px"></button>
+                    </div>
+                    <div id="seek-bar">
+                        <div id="fill"></div>
+                        <div id="handle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="document-container">
+        <div class="slick_slider">
+            <!-------Slide 01-------->
+            <!----Slider Box---->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+
+            </div>
+            <!-------Slide 02-------->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+            </div>
+            <!-------Slide 03-------->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+            </div>
+            <!-------Slide 04-------->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+            </div>
+            <!-------Slide 05-------->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+            </div>
+            <!-------Slide 06-------->
+            <div class="document-card">
+                <div class="document-view">
+                    <img src="" alt="document">
+                </div>
+                <div class="document-description">
+                    <p class="document-title">Title</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, maxime rem voluptatum laboriosam sit eius adipisci asperiores quis incidunt magni optio!
+                    </p>
+                </div>
+                <div class="document-buttons">
+                    <button class="document-read ">Read</button>
+                    <button class="document-buy deactivate">Buy!</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock content %}
