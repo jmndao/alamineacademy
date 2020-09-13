@@ -76,32 +76,64 @@ class YoutubeApi:
         return self.add_url(index_context)
 
     def digest_for_ressource(self):
+        ###################################
         video_ids = []
+
+        # playlists = []
+        # nextPageToken = None
+        
+        # while True:
+        #     playlist_req = self._yt_instance.playlists().list(
+        #         part="snippet, player",
+        #         channelId=self.channel_id,
+        #         maxResults=5,
+        #         pageToken=nextPageToken
+        #     )
+        #     playlist_res = playlist_req.execute()
+        #     # Treat the response so that it'll be suitable to
+        #     # put in context
+        #     # index_context : __dict__(kink, id, snippet, channelId,
+        #     #                 title, description, thumbnails, channelTitle,
+        #     #                 localized, player)
+        #     for item in playlist_res["items"]:
+        #         playlists.append(item)
+        #     nextPageToken = playlist_res.get('nextPageToken')
+            
+        #     if not nextPageToken:
+        #         break
+        
+        ##################################
         
         playlist_req = self._yt_instance.playlists().list(
             part="snippet, player",
-            channelId=channel_id
+            channelId=channel_id,
+            maxResults=10,
         )
         playlist_res = playlist_req.execute()
+        
         playlists = playlist_res["items"]
+            
+        
         # Let's pick up ids of playlists so that we can 
         # loop through to get videos from
+        
         for playlist in playlists:
 
             playlistId = playlist["id"]
             playlistTitle = (playlist["snippet"]["title"]).strip()
-            
+            self._id_playlistTitle.update({playlistId: playlistTitle})
+            self._playlist_titles.append(playlistTitle)
+
             playlistItems_req = self._yt_instance.playlistItems().list(
                 part="contentDetails, snippet",
-                playlistId=playlistId
+                playlistId=playlistId,
+                
             )
-            
-            self._id_playlistTitle.update({playlistId: playlistTitle})
-            
+                
+                
             playlistItems_res = playlistItems_req.execute()
             playlistItems = playlistItems_res["items"]
             
-            self._playlist_titles.append(playlistTitle)
             
             for playlistItem in playlistItems:
                 playlistItem_playlistId = playlistItem["snippet"]["playlistId"]
@@ -268,41 +300,30 @@ class RessourceView(ListView):
             }
         return context
 
-# @csrf_protect
-# def ressource(request, ressource_name):
+    
 
-#     ressources = yt_instance.digest_for_ressource(ressource_name)
-#     if ressources["is_video"] == None:
-#         return render(request, 'academy/ressource_not_found.html', context=None)
-#     elif ressources["is_video"] == False:
-#         playlistTitle = ressources["playlist"]
-#         a_video = ressources["a_video"]
-#         context = {'is_video': False,
-#                    'title': playlistTitle,
-#                    'a_video': a_video,
-#                    'videos': ressources["ressource"]}
-#         return render(request, 'academy/ressource.html', context)
-#     elif ressources["is_video"] == True:
-#         playlistList = ressources["playlist"]
-#         video = ressources["ressource"]
-#         context = {'is_video': True,
-#                    'video': video,
-#                    'playlist': playlistList}
-#         return render(request, 'academy/ressource.html', context)
-
-
-def home(request):
-
-    playlists = yt_instance.digest_for_index()
-    context = {'playlists': playlists}
-    return render(request, 'academy/index.html', context)
-
+class HomeView(ListView):
+    
+    template_name = 'academy/index.html'
+    context_object_name = 'playlists'
+    
+    def get_queryset(self, **kwargs):
+        self.playlists = yt_instance.digest_for_index()
+        return self.playlists
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        context['playlists'] = self.playlists
+        return context
+    
+    
+# class CoursesView(ListView):
+    
+#     template_name = 'academy/course.html'
+    
+def course(request):
+    return render(request, 'academy/course.html', context={})
 
 def aboutUs(request):
-
     return render(request, 'academy/aboutUs.html', context={})
-
-
-def courses(request):
-
-    return render(request, 'academy/course.html', context={})
