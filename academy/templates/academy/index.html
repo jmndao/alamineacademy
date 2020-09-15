@@ -120,14 +120,14 @@
         <div class="slick_slider">
             <!-------Slide 01-------->
             <!----Slider Box---->
-            {% for playlist in playlists %}
+            {% for video in videos %}
                 <div class="card">
-                    <iframe controls class="box_video" src="{{ playlist.player.url }}" style="border:none;">
+                    <iframe controls class="box_video" src="{{ video.video_url }}" style="border:none;">
                         {% comment %} <source src="{{ playlist.player.url }}" type="video/mp4"> {% endcomment %}
                     </iframe>
                     <div class="box_container">
-                        <h4><b>{{ playlist.snippet.title }}</b></h4>
-                        <p class="video_description">{{ playlist.snippet.description }}</p>
+                        <h4><b>{{ video.title }}</b></h4>
+                        <p class="video_description">{{ video.description }}</p>
                     </div>
                 </div>
             {% endfor %}

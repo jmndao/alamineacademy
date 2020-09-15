@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '6#%vkrt=p5#hd1e!yxu0a=%8g@r5x=ca+(4dohl6j#u8glb%gs'
 
-YOUTUBE_API_KEY = 'AIzaSyAqjBZjzRrfFDW69fU33P81qPQnxwtWPtY'
-YOUTUBE_USER_ID = 'Ppjzn8YiOofk97I8NleXeQ'
-YOUTUBE_CHANNEL_ID = 'UCPpjzn8YiOofk97I8NleXeQ'
+# YOUTUBE_API_KEY = 'AIzaSyAqjBZjzRrfFDW69fU33P81qPQnxwtWPtY'
+# YOUTUBE_USER_ID = 'Ppjzn8YiOofk97I8NleXeQ'
+# YOUTUBE_CHANNEL_ID = 'UCPpjzn8YiOofk97I8NleXeQ'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'academy.apps.AcademyConfig',
     # Adding the DRF app...
     'rest_framework',
+    # Adding django-embed-videos for yt videos
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,11 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL   = '/media/'
+
+
+# Django-embed-video
+# To detect http/s we must use request context processor
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)

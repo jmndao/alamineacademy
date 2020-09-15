@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 
@@ -119,3 +120,49 @@ class AcademyPrivateAnswer(models.Model):
     answer = models.TextField()
     answer_date = models.DateTimeField(auto_now_add=True)
 
+class YoutubePlaylist(models.Model):
+    '''
+        A model that record playlists
+        
+        -- title        : title of the playlist
+    '''
+    
+    title = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.title
+
+class YoutubePlaylistItem(models.Model):
+    '''
+        A model that keep track of videos' playlist. 
+        
+        -- title        : title of the playlist
+        
+    '''
+    
+    playlist_title = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
+    playlist_url = EmbedVideoField()
+    
+
+class YoutubeVideos(models.Model):
+    
+    '''
+        A model that held record of youtube videos on the
+        website via the django-embed-video framework. 
+        We'll be able to embed youtube video in the website
+        easily with track of their playlist too. 
+        
+        -- title        : title of the video
+        -- description  : description of the video
+        -- videos       : videos' urls
+        -- playlist     : each video belongs to a playlist
+                          (YoutubePlaylist_class)
+    '''
+    
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    video_url = EmbedVideoField()
+    playlist = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.title
