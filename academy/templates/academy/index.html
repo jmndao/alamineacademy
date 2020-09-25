@@ -45,25 +45,25 @@
 
     <div class="wrapper">
         <div class="programs">
-            <h2>Programs</h2>
+            <h2 id="programs">Programs</h2>
             <div class="program_column01">
                 <div class="program_card">
                     <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
-                    <h3><a href="#">Fiqh</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
                 </div>
                 <div class="program_card">
                     <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
-                    <h3><a href="#">Tahwid</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'tawhid' %}">Tahwid</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
                 </div>
                 <div class="program_card">
                     <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
-                    <h3><a href="#">Tafsir</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
@@ -72,21 +72,21 @@
             <div class="program_column02">
                 <div class="program_card">
                     <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
-                    <h3><a href="#">Khutbahs</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'khutba' %}">Khutbahs</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
                 </div>
                 <div class="program_card">
                     <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
-                    <h3><a href="#">Bayane</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'bayane' %}">Bayane</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
                 </div>
                 <div class="program_card">
                     <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
-                    <h3><a href="#">Seerah</a></h3>
+                    <h3><a href="{% url 'ressourcePage' 'seerah' %}">Seerah</a></h3>
                     <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
                     </p>
@@ -120,14 +120,14 @@
         <div class="slick_slider">
             <!-------Slide 01-------->
             <!----Slider Box---->
-            {% for video in videos %}
+            {% for playlist in playlists %}
                 <div class="card">
-                    <iframe controls class="box_video" src="{{ video.video_url }}" style="border:none;">
+                    <iframe controls class="box_video" src="{{ playlist.playlistUrl }}" style="border:none;">
                         {% comment %} <source src="{{ playlist.player.url }}" type="video/mp4"> {% endcomment %}
                     </iframe>
                     <div class="box_container">
-                        <h4><b>{{ video.title }}</b></h4>
-                        <p class="video_description">{{ video.description }}</p>
+                        <h4><b>{{ playlist.playlistTitle.title }}</b></h4>
+                        <p class="video_description"></p>
                     </div>
                 </div>
             {% endfor %}

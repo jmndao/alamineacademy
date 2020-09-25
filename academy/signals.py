@@ -6,7 +6,7 @@ from .models import YoutubePlaylistItem, YoutubeVideos
 
 
 def format_url(url, video=False, playlist=False):
-    re_code = re.compile(r'https://www.youtube\.com/watch\?v=(?P<video_id>\w+)&list=(?P<pl_id>[\w\W]+)')
+    re_code = re.compile(r'https://www.youtube\.com/watch\?v=(?P<video_id>[\w\W\d]+)&list=(?P<pl_id>[\w\W]+)?(&index)')
     playlist_url = 'https://www.youtube.com/embed?listType=playlist&list='
     video_url = 'https://www.youtube.com/embed/'
     match = re.search(re_code, url)
@@ -19,8 +19,10 @@ def format_url(url, video=False, playlist=False):
 
 @receiver(pre_save, sender=YoutubePlaylistItem)
 def playlist_url_func(sender, instance, **kwargs):
-    instance.playlist_url = format_url(instance.playlist_url, playlist=True)
+    instance.playlistUrl = format_url(instance.playlistUrl, playlist=True)
     
 @receiver(pre_save, sender=YoutubeVideos)
 def video_url_func(sender, instance, **kwargs):
-    instance.video_url = format_url(instance.video_url, video=True)
+    print(instance.videoUrl)
+    print(format_url(instance.videoUrl, video=True))
+    instance.videoUrl = format_url(instance.videoUrl, video=True)

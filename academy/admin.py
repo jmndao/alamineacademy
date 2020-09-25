@@ -3,7 +3,6 @@ from embed_video.admin import AdminVideoMixin
 from .models import (YoutubeVideos,
                      YoutubePlaylistItem,
                      YoutubePlaylist,
-                     AcademyModel,
                      AcademyPrivateAnswer,
                      AcademyPrivateQuestion,
                      AcademyPublicAnswer,
@@ -16,7 +15,6 @@ from .models import (YoutubeVideos,
 class YoutubeAdmin(AdminVideoMixin, admin.ModelAdmin):
     pass
 
-admin.site.register(AcademyModel)
 admin.site.register(AcademyPrivateAnswer)
 admin.site.register(AcademyPrivateQuestion)
 admin.site.register(AcademyPublicAnswer)

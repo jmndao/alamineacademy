@@ -5,43 +5,44 @@ from embed_video.fields import EmbedVideoField
 # Create your models here.
 
 
-def file_directory_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/<file_type>/<filename>
-    return '{0}/{1}'.format(instance.file_type, filename)
+# def file_directory_path(instance, filename):
+#     # file will be uploaded to MEDIA_ROOT/<file_type>/<filename>
+#     return '{0}/{1}'.format(instance.file_type, filename)
 
 
-class AcademyModel(models.Model):
+# class AcademyModel(models.Model):
 
-    '''
-        AcademyModel is the representative of differents feed 
-        in AlAmineAcademy website that is designed to provide
-        courses in islamic domains such as Seerah, Tawhid, etc 
-        (see models.TextChoices)
+#     '''
+#         AcademyModel is the representative of differents feed 
+#         in AlAmineAcademy website that is designed to provide
+#         courses in islamic domains such as Seerah, Tawhid, etc 
+#         (see models.TextChoices)
 
-            -- category     : Category of course to provide
-            -- title        : title of the course
-            -- description  : description of the course
-            -- file_type    : type of the file (audio or video)
-            -- created_date : the date it is added in the site
-    '''
+#             -- category     : Category of course to provide
+#             -- title        : title of the course
+#             -- description  : description of the course
+#             -- file_type    : type of the file (audio or video)
+#             -- created_date : the date it is added in the site
+#     '''
 
-    CATEGORY_TYPE = [
-        ('SEERAH', 'Seerah'),
-        ('TAWHID', 'Tawhid'),
-        ('HADITHS', 'Hadiths'),
-        ('KHUTBA', 'Khutba'),
-        ('FIQH', 'Fiqh'),
-        ('TAFSIR', 'Tafsir'),
-        ('BAYANE', 'Bayane')
-    ]
+#     CATEGORY_TYPE = [
+#         ('SEERAH', 'Seerah'),
+#         ('TAWHID', 'Tawhid'),
+#         ('HADITHS', 'Hadiths'),
+#         ('KHUTBA', 'Khutba'),
+#         ('FIQH', 'Fiqh'),
+#         ('TAFSIR', 'Tafsir'),
+#         ('BAYANE', 'Bayane')
+#     ]
 
-    category = models.CharField(blank=True, choices=CATEGORY_TYPE, max_length=10)
-    title = models.CharField(max_length=50, blank=False, null=False)
-    description = models.TextField()
-    file_type_choices = models.TextChoices('audio', 'video')
-    file_type = models.CharField(blank=True, choices=file_type_choices.choices, max_length=10)
-    upload = models.FileField(upload_to=file_directory_path)
-    created_date = models.DateTimeField(default=timezone.now)
+#     category = models.CharField(blank=True, choices=CATEGORY_TYPE, max_length=10)
+#     title = models.CharField(max_length=50, blank=False, null=False)
+#     description = models.TextField()
+#     file_type_choices = models.TextChoices('audio', 'video')
+#     file_type = models.CharField(blank=True, choices=file_type_choices.choices, max_length=10)
+#     upload = models.FileField(upload_to=file_directory_path)
+#     created_date = models.DateTimeField(default=timezone.now)
+
 
 
 class AcademyPublicQuestion(models.Model):
@@ -56,8 +57,8 @@ class AcademyPublicQuestion(models.Model):
         -- date_posted      : the date the question was asked
     '''
 
-    question_text = models.TextField()
-    date_posted = models.DateTimeField(auto_now_add=True)
+    questionText = models.TextField()
+    datePosted = models.DateTimeField(auto_now_add=True)
 
 class AcademyPublicAnswer(models.Model):
     '''
@@ -75,7 +76,7 @@ class AcademyPublicAnswer(models.Model):
 
     question = models.ForeignKey(AcademyPublicQuestion, on_delete=models.CASCADE)
     answer = models.TextField()
-    answer_date = models.DateTimeField(auto_now_add=True)
+    answerDate = models.DateTimeField(auto_now_add=True)
     
 
 
@@ -118,7 +119,7 @@ class AcademyPrivateAnswer(models.Model):
 
     question = models.ForeignKey(AcademyPrivateQuestion, on_delete=models.CASCADE)
     answer = models.TextField()
-    answer_date = models.DateTimeField(auto_now_add=True)
+    answerDate = models.DateTimeField(auto_now_add=True)
 
 class YoutubePlaylist(models.Model):
     '''
@@ -134,14 +135,27 @@ class YoutubePlaylist(models.Model):
 
 class YoutubePlaylistItem(models.Model):
     '''
-        A model that keep track of videos' playlist. 
+        A model that keep track of videos' playlist then 
+        indicates in which category (see below list) the 
+        playlist belongs to.
         
         -- title        : title of the playlist
+        -- category     : category to which belongs the playlist
         
     '''
+    CATEGORY_TYPE = [
+        ('SEERAH', 'Seerah'),
+        ('TAWHID', 'Tawhid'),
+        ('HADITHS', 'Hadiths'),
+        ('KHUTBA', 'Khutba'),
+        ('FIQH', 'Fiqh'),
+        ('TAFSIR', 'Tafsir'),
+        ('BAYANE', 'Bayane')
+    ]
     
-    playlist_title = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
-    playlist_url = EmbedVideoField()
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPE)
+    playlist = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
+    playlistUrl = EmbedVideoField()
     
 
 class YoutubeVideos(models.Model):
@@ -161,7 +175,7 @@ class YoutubeVideos(models.Model):
     
     title = models.CharField(max_length=100)
     description = models.TextField()
-    video_url = EmbedVideoField()
+    videoUrl = EmbedVideoField()
     playlist = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
     
     def __str__(self):

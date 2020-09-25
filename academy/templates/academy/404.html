@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AlAmineAcademy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!----css---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/error.css' %}" />
+</head>
+
+<body>
+    <div class="dropdown">
+        <nav>
+            <a href="#"><img src="{% static 'academy/img/logo.png' %}" alt="logo" class="logo" /></a>
+        </nav>
+    </div>
+
+    <div class="error_descriptor">
+        <img src="{% static 'academy/img/logo.png' %}" alt="logo" />
+        <div class="error_text">
+            <div class="ressource_not_found">
+                <h1>Ressource Not Found !</h1>
+                <span id="ressource_name"> Something about the ressource Name...</span>
+            </div>
+            <div class="line_break"></div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur magni quo labore non? Fugiat modi, quod illo optio expedita harum nam numquam quibusdam minus iusto aperiam consequatur enim sunt repudiandae?</p>
+            <button class="back_btn"><a href="#">Go Back to Home</a></button>
+        </div>
+    </div>
+
+
+    <footer class="bottom_line">
+        <div class="academy_description">
+            <img src="{% static 'academy/img/logo.png' %}" alt="logo" />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad neque ipsum vel, ut est quidem voluptatem porro error, officia nihil delectus ea provident, incidunt consectetur! Provident odio totam cum numquam.</p>
+        </div>
+        <div class="other_links">
+            <div class="contact">
+                <h3>Contacts: </h3>
+                <p>+221774547534</p>
+                <p>+221334566565</p>
+                <p>+221762434456</p>
+            </div>
+            <div class="links">
+                <h3>Follow Us on: </h3>
+                <img src="{% static 'academy/img/fb.jpg' %}" alt="facebook-link">
+                <img src="{% static 'academy/img/twitter.webp' %}" alt="twitter-link">
+                <img src="{% static 'academy/img/instagram.jpg' %}" alt="instagram-link">
+                <img src="{% static 'academy/img/whatsapp.jpg' %}" alt="whatsApp-link">
+            </div>
+        </div>
+        <div class="announcement">
+            <h1>The App is coming soon !</h1>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

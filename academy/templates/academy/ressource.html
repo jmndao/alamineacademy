@@ -2,94 +2,53 @@
 {% load static %}
 
 {% block content %}
-
     <div class="image-view">
         <div id="academy">
-            <p>Ressource</p>
+            <p>{{program_title}}</p>
         </div>
         <img src="{% static 'academy/img/bg6.jpg' %}" alt="AlAmineAcademy">
     </div>
-
     <div class="ressource-title">
-        <p>Ressource 01</p>
+        <p>{{program_title}}</p>
     </div>
 
     <div class="video-gallery__screen">
-    {% if is_video %}
         <div class="video-screen-wrapper">
-            <iframe src="{{ video.url }}" id="video-screen" style="border:none;"></iframe>
+            <iframe controls id="video-screen" src="{{video_screen_url}}" style="border:none;" onclick="drag_up(this)"></iframe>
         </div>
+
         <div class="video-gallery">
-            {% for vid in playlist %}
-                <div class="card video-gallery__card">
-                    <iframe controls class="box_video" src="{{ vid.url }}" style="border:none;" onclick="drag_up(this)"></iframe>
-                    <div class="box_container video-gallery__box_container">
-                        <h4><b>{{vid.title}}</b></h4>
-                        <p class="video_description">{{vid.description|truncatewords:10}}</p>
-                    </div>
+        {% for video in ressource.object_list %}
+            <div class="card video-gallery__card">
+                <iframe controls class="box_video" src="{{ video.videoUrl }}" style="border:none;" onclick="drag_up(this)"></iframe>
+                <div class="box_container video-gallery__box_container">
+                    <h4><b>{{video.title}}</b></h4>
+                    <p class="video_description">{{video.description|truncatewords:10}}</p>
                 </div>
+            </div>
+        {% endfor %}
+        </div>
+ 
+        <div class="video-gallery__controls pagination">
+            {% if ressource.has_previous %}
+                <button class="video_prev"><a href="?page={{ ressource.previous_page_number }}">Prev</a></button>
+            {% else %}
+                <button class="video_prev deactivate"><a href="#">Prev</a></button>
+            {% endif %}
+            {% for num in page_num %}
+                <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
+                {% if num == 3 %}
+                    <button class="pagination_btn pg_btn_activate">...</button>
+                {% endif %}
             {% endfor %}
-
-            <div class="video-gallery__controls pagination">
-                {% if playlist.has_previous %}
-                    <button class="video_prev"><a href="?page={{ playlist.previous_page_number }}">Prev</a></button>
-                {% else %}
-                    <button class="video_prev deactivate"><a href="#">Prev</a></button>
-                {% endif %}
-                {% for num in page_num %}
-                    <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
-                    {% if num == 3 %}
-                        <button class="pagination_btn pg_btn_activate">...</button>
-                    {% endif %}
-                {% endfor %}
-                {% if playlist.has_next %}
-                    <button class="video_next"><a href="?page={{ playlist.next_page_number }}">Next</a></button>            
-                {% else %}
-                    <button class="video_next deactivate"><a href="#">Next</a></button>
-                {% endif %}
-            </div>
-         </div>
-    {% else %}
-            <div class="video-screen-wrapper">
-                <iframe src="{{ a_video.url }}" id="video-screen" style="border:none;"></iframe>
-            </div>
-            <div class="video-gallery">
-                {% for vid in videos %}
-                    <div class="card video-gallery__card">
-                        <iframe controls class="box_video" src="{{ vid.url }}" style="border:none;" onclick="drag_up(this)"></iframe>
-                        <div class="box_container video-gallery__box_container">
-                            <h4><b>{{vid.title}}</b></h4>
-                            <p class="video_description">{{vid.description|truncatewords:10}}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-            <div class="video-gallery__controls pagination">
-                {% if videos.has_previous %}
-                    <button class="video_prev"><a href="?page={{ videos.previous_page_number }}">Prev</a></button>
-                {% else %}
-                    <button class="video_prev deactivate"><a href="#">Prev</a></button>
-                {% endif %}
-                {% for num in page_num %}
-                    <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
-                    {% if num == 3 %}
-                        <button class="pagination_btn pg_btn_activate">...</button>
-                    {% endif %}
-                {% endfor %}
-                {% if videos.has_next %}
-                    <button class="video_next"><a href="?page={{ videos.next_page_number }}">Next</a></button>            
-                {% else %}
-                    <button class="video_next deactivate"><a href="#">Next</a></button>
-                {% endif %}
-            </div>
-    {% endif %}
-        
+            {% if ressource.has_next %}
+                <button class="video_next"><a href="?page={{ ressource.next_page_number }}">Next</a></button>            
+            {% else %}
+                <button class="video_next deactivate"><a href="#">Next</a></button>
+            {% endif %}
+        </div>
     </div>
 
-        
-
-    </div>
 
     <div class="playlist_audio">
         <h1>Playlist Audios</h1>

@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,3 +23,5 @@ urlpatterns = [
     path('', include('academy.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
+
+handler404 = 'academy.views.handler404'
