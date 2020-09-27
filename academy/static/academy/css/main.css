@@ -4,74 +4,144 @@
     box-sizing: border-box;
 }
 
-.dropdown {
-    margin: 0 auto;
+html {
+    scroll-behavior: smooth;
 }
 
-nav {
-    height: 60px;
-    background: #2c3e50;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+/* The navigation menu */
+
+.navbar {
+    overflow: hidden;
+    background-color: #2c3e50;
+    height: 8vh;
 }
 
-.logo {
-    padding: 2px 0 0 80px;
-    width: 150px;
-    height: 60px;
+.navbar img {
+    width: 8vh;
+    height: 8vh;
+    text-align: center;
 }
 
-nav ul {
-    padding: 0;
-    margin: 0;
-    float: right;
-    margin-right: 30px;
+.navbar #logo {
+    padding: 0px;
+    width: 15%;
+    background-color: #fff;
 }
 
-nav ul li {
-    background-color: rgba(44, 62, 80, 0.8);
-    position: relative;
-    list-style: none;
-    display: inline-block;
-}
 
-nav ul li a {
-    display: block;
-    padding: 0 15px;
+/* Navigation links */
+
+.navbar a {
+    float: left;
+    font-size: 18px;
     color: #eee;
+    text-align: center;
+    padding: 14px 20px;
     text-decoration: none;
-    line-height: 60px;
-    font-size: 16px;
 }
 
-nav ul li a:hover {
+
+/* The subnavigation menu */
+
+.subnav {
+    float: left;
+    overflow: hidden;
+}
+
+
+/* Subnav button */
+
+.subnav .subnavbtn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: #eee;
+    padding: 14px 16px;
+    background-color: #2c3e50;
+    font-family: inherit;
+    margin: 0;
+}
+
+
+/* Add a red background color to navigation links on hover */
+
+.navbar a:hover,
+.subnav:hover .subnavbtn {
     background-color: #243342;
-    color: white;
-    font-weight: 500;
+    cursor: pointer;
 }
 
-nav ul ul {
-    position: absolute;
-    top: 60px;
+
+/* Style the subnav content - positioned absolute */
+
+.subnav-content {
+    width: 100%;
+    /* height: 200px; */
     display: none;
+    position: absolute;
+    left: 0;
+    background-color: rgba(44, 62, 80, 0.8);
+    z-index: 1;
 }
 
-nav ul li:hover>ul {
-    display: block;
-    z-index: 10;
+
+/* Style the subnav links */
+
+.subnav-content a {
+    width: 100%;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    padding-left: 30px;
 }
 
-nav ul ul li {
-    width: 150px;
-    float: none;
-    display: list-item;
-    position: relative;
+
+/* Add a grey background color on hover */
+
+.subnav-content a:hover {
+    background-color: #243342;
 }
 
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: #eee;
-    margin: 5px;
+
+/* When you move the mouse over the subnav container, open the subnav content */
+
+.subnav:hover .subnav-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    transition: display 800ms ease-in-out;
+}
+
+
+/*------------------------------------------------*/
+
+
+/* Style the header: fixed position (always stay at the top) */
+
+.header {
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    background-color: #2c3e50;
+}
+
+
+/* The progress container (grey background) */
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #eee;
+}
+
+
+/* The progress bar (scroll indicator) */
+
+.progress-bar {
+    height: 5px;
+    background: #243342;
+    width: 0%;
 }
 
 
@@ -91,28 +161,45 @@ nav ul ul li {
     text-align: right;
 }
 
-.qux li,
-.qux p {
+.qux li {
     display: inline-block;
     list-style: none;
-    margin: 0 5px;
+    margin: 0 10px;
+    border: 1px solid #000;
+    outline: none;
+    padding: 5px 10px;
 }
 
 .qux li a {
     text-decoration: none;
-    font-size: 18px;
-    color: white;
+    font-size: 14px;
     font-weight: 600;
 }
 
-.qux p {
-    color: white;
-    font-weight: 500;
-    font-size: 20px;
+#login {
+    background-color: #fff;
 }
 
-.qux li a:hover {
-    text-decoration: underline;
+#login a {
+    color: #2c3e50;
+}
+
+#signup {
+    color: #eee;
+}
+
+#signup a {
+    color: #eee;
+}
+
+#signup:hover {
+    transition: all 400ms ease-in-out;
+    background-color: rgb(161, 148, 148);
+}
+
+#login:hover {
+    transition: all 400ms ease-in-out;
+    background-color: rgb(161, 148, 148);
 }
 
 .research_bar form {
@@ -128,7 +215,7 @@ nav ul ul li {
     border: none;
     border-radius: 4px;
     background-color: white;
-    /* background-image: url('../img/search.png'); */
+    background-image: url('img/search.png');
     /* background-position: 10px 10px; */
     /* background-repeat: no-repeat; */
     padding-left: 40px;
@@ -145,21 +232,14 @@ nav ul ul li {
 
 /* ----------------------------------------------- */
 
-.programs,
-.about_us {
-    float: left;
-    width: 46%;
-    padding: 1%;
-    margin: 1%;
-}
-
-.programs h2 {
+.programs_wrapper h2 {
+    margin-top: 30px;
     text-align: center;
-}
-
-.bg2 {
-    width: 600px;
-    height: auto;
+    color: #2c3e50;
+    height: 100px;
+    font-size: 50px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .program_logo {
@@ -169,85 +249,93 @@ nav ul ul li {
     padding: 3px 3px;
 }
 
-.program_column01,
-.program_column02 {
-    float: left;
-    width: 46%;
-    padding: 1%;
-    margin: 1%;
+.program_row {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.program_head {
+    display: flex;
+    align-items: center;
 }
 
 .program_card {
-    margin: 10px 0px;
-    padding: 5px 5px;
-    max-width: 100%;
-    max-height: 300px;
-    position: relative;
-    overflow: hidden;
+    width: 500px;
+    padding: 20px 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
 }
 
-.program_card h3 a {
+.program_card:hover {
+    transition: box-shadow 300ms ease-in;
+    background-color: #eee;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+    color: #2c3e50;
+}
+
+.program_head h3 {
+    width: 50%;
+    text-align: center;
+}
+
+.program_head a {
     text-decoration: none;
+    font-size: 30px;
     color: #000;
 }
 
-.program_card h3 a:hover {
-    text-decoration: underline;
+.program_head a:hover {
+    border: 1px solid #2c3e50;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    outline: none;
+    color: #eee;
+    border-radius: 5px;
+    transition: all 300ms ease-in-out;
 }
 
-.program_card p {
-    text-indent: 100px;
-    text-align: justify;
+
+/* ----------------------------------------------- */
+
+.about_us_see_more {
+    padding: 10px 0px;
+    color: #000;
+    background-color: #eee;
 }
 
-.program_card img,
-.program_card h3 {
-    float: left;
-    margin-right: 10px;
+.about_us_see_more a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 25px;
+    font-weight: 500;
 }
 
-.program_column01 h3,
-.program_column02 h3 {
-    position: absolute;
-    top: 40px;
-    left: 120px;
+.about_us_see_more p {
+    text-align: center;
+    padding-top: 5px;
 }
 
-.about_us {}
+.about_us_see_more a:hover {
+    font-weight: 800;
+    transition: all 400ms ease-in-out;
+}
 
-.about_us_img {
-    position: relative;
+.about_us_head_index {
     width: 100%;
-    height: 200px;
-    overflow: hidden;
+    height: 90px;
+    color: #eee;
+    background-color: #2c3e50;
 }
 
-.about_us_logo {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    bottom: 10px;
-    right: 20px;
-    border-radius: 50% 50%;
+.about_us_head h3 {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 10px;
 }
 
-.about_us_section h2 {
-    margin: 10px 10px;
-    text-align: right;
-}
 
-.about_us_section p {
-    line-height: 20px;
-    text-indent: 40px;
-    margin: 15px 0;
-}
-
-.programs:after {
-    clear: both;
-    content: "";
-    display: block;
-}
+/* ----------------------------------------------- */
 
 .container {
     width: 100%;
@@ -270,7 +358,6 @@ nav ul ul li {
 
 .box_video {
     width: 100%;
-    border: none;
 }
 
 .box .title {
@@ -344,11 +431,15 @@ nav ul ul li {
 
 /*----------------------------------------*/
 
-.top_container02 {}
-
 .top_container02 h1 {
+    background-color: #2c3e50;
+    margin-top: 30px;
     text-align: center;
-    margin: 10px 0px;
+    color: #eee;
+    height: 100px;
+    font-size: 50px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -515,8 +606,39 @@ nav ul ul li {
 }
 
 
-/*********--------- Phone Screen ------------*************/
+/* $$$$$$$$$$$$ Phone Scree $$$$$$$$$$$$$$ */
 
 @media screen and (max-width: 768px) {
     /* For mobile phones: */
+    nav {
+        justify-content: space-between;
+    }
+    .nav-links {
+        position: absolute;
+        top: 8vh;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        z-index: 10;
+        align-items: center;
+    }
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links li ul {
+        position: absolute;
+        bottom: 0;
+    }
+    .nav-links li ul {
+        width: 100%;
+    }
+    .burger {
+        display: block;
+        margin-right: 30px;
+        cursor: pointer;
+    }
+    #course {
+        position: absolute;
+        top: 0px;
+    }
 }

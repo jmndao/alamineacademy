@@ -25,43 +25,41 @@
 
 <body>
 
-    <div class="dropdown">
-        <nav>
-            <a href="#Home"><img src="{% static 'academy/img/logo.png' %}" alt="logo" class="logo" /></a>
-            <ul>
-                <li><a href="{% url 'homePage' %}">Home</a></li>
-                <li><a href="{% url 'aboutUsPage' %}">About Us</a></li>
-                <li><a href="#Courses">Courses</a>
-                    <ul>
-                        <li><a href="{% url 'coursePage' %}">Course 01</a></li>
-                        <li><a href="{% url 'coursePage' %}">Course 02</a></li>
-                        <li><a href="{% url 'coursePage' %}">Course 03</a></li>
-                    </ul>
-                </li>
-                <li><a href="#programs">Programs</a>
-                    <!-- <ul>
-                        <li><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh </a></li>
-                        <li><a href="{% url 'ressourcePage' 'khutba' %}">Khutba </a></li>
-                        <li><a href="{% url 'ressourcePage' 'tawhid' %}">Tawhid </a></li>
-                        <li><a href="{% url 'ressourcePage' 'bayane' %}">Bayane </a></li>
-                        <li><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir </a></li>
-                        <li><a href="{% url 'ressourcePage' 'seerah' %}">Seerah </a></li>
-                        <li><a href="{% url 'ressourcePage' 'hadiths' %}">Hadiths </a></li>
-                    </ul> -->
-                </li>
-                <li><a href="#QA">Question/Answer</a>
-                    <ul>
-                        <li><a href="#QPublic">Question Public</a></li>
-                        <li><a href="#QPrivate">Question Private</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+    <div class="header">
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <a href="{% url 'homePage' %}" id="logo"><img src="{% static 'academy/img/logo.png' %}" alt="logo"></a>
+        <a href="{% url 'homePage' %}">Home</a>
+        <a href="#about_us">About Us</a>
+        <div class="subnav">
+            <button class="subnavbtn">Courses <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <a href="{% url 'coursePage' %}">Courses 01</a>
+                <a href="{% url 'coursePage' %}">Courses 02</a>
+                <a href="{% url 'coursePage' %}">Courses 03</a>
+                <a href="{% url 'coursePage' %}">Courses 04</a>
+                <a href="{% url 'coursePage' %}">Courses 05</a>
+                <a href="{% url 'coursePage' %}">Courses 06</a>
+                <a href="{% url 'coursePage' %}">Courses 07</a>
+                <a href="{% url 'coursePage' %}">Courses 08</a>
+                <a href="{% url 'coursePage' %}">Courses 09</a>
+                <a href="{% url 'coursePage' %}">Courses 10</a>
+                <a href="{% url 'coursePage' %}">Courses 11</a>
+                <a href="{% url 'coursePage' %}">Courses 12</a>
             </div>
-        </nav>
+        </div>
+        <a href="#programs">Programs</a>
+        <div class="subnav">
+            <button class="subnavbtn">Question/Answer <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+                <a href="#">Question Public</a>
+                <a href="#">Question Private</a>
+            </div>
+        </div>
     </div>
 
     {% block content %}{% endblock content %}

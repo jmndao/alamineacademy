@@ -2,11 +2,18 @@
 {% load static %} 
 
 {% block content %}
-    <div class="image-view">
-        <div id="academy">
-            <p>Al Amine Academy</p>
+
+    <div class="about_us_section">
+        <div class="about_us_presentation">
+            <div class="about_us_video_section">
+                <img id="about_us_image" src="{% static 'academy/img/bg7.jpg' %}" alt="bg">
+            </div>
+            <button id="play_video" onclick="playVideo()"><img id="play_video_img" src="{% static 'academy/img/play_video_icon.jpg' %}" alt="play"></button>
         </div>
-        <img src="{% static 'academy/img/bg3.jpg' %}" alt="AlAmineAcademy">
+    </div>
+
+    <div class="about_us_head">
+        <h2>Al Amine Academy</h2>
     </div>
 
     <div class="note_1">
@@ -39,8 +46,61 @@
         </div>
     </div>
 
-    <div class="contact_info">
-        
+    <div class="about_us_head">
+        <h2>Staff Members</h2>
+    </div>
+
+
+    <div class="section_staff_member">
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 01</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
+
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 02</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
+
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 03</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section_staff_member">
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 04</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
+
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 05</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
+
+        <div class="card_member">
+            <img src="{% static 'academy/img/bg.jpg' %}" alt="Avatar" style="width: 100%;">
+            <div class="container_member">
+                <h4><b>Staff 06</b></h4>
+                <p>Architect & Engineer</p>
+            </div>
+        </div>
     </div>
 
 {% endblock content %}

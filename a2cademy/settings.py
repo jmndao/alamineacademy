@@ -27,9 +27,8 @@ SECRET_KEY = '6#%vkrt=p5#hd1e!yxu0a=%8g@r5x=ca+(4dohl6j#u8glb%gs'
 # YOUTUBE_CHANNEL_ID = 'UCPpjzn8YiOofk97I8NleXeQ'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = ['127.0.0.1']
+DEBUG = True
+ALLOWED_HOSTS = []
 
 
 # Application definition
