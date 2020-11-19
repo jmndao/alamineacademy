@@ -11,3 +11,28 @@ function playPause(i) {
     }
 
 }
+/*------------ JS for navigation Bar --------------*/
+
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.topnav');
+    const nav_link = document.querySelectorAll('.nav-link');
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        // Animate links
+        nav_link.forEach((link, ind) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${ind / 5 + 0.3}s`
+            }
+        });
+
+        // Animate burger
+        burger.classList.toggle('toggle');
+    });
+}
+
+navSlide();

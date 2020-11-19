@@ -2,6 +2,25 @@ $('.slick_slider').slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 2,
+    responsive: [{
+            breakpoint: 620,
+            settings: {
+                arrows: true,
+                variableWidth: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        },
+        {
+            breakpoint: 345,
+            settings: {
+                arrows: true,
+                variableWidth: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        }
+    ],
     arrows: true,
     dots: true,
     centerPadding: '60px',
@@ -42,13 +61,10 @@ $(document).ready(function() {
 
 // CreateVideoNOde
 
-var video_node = document.createElement("VIDEO");
-var source_node = document.createElement("SOURCE");
+var video_node = document.createElement("iframe");
 video_node.id = "about_us_video";
-source_node.src = "academy/img/video.mp4";
-source_node.type = "video/mp4";
-video_node.appendChild(source_node);
-console.log(video_node);
+video_node.style.border = "none";
+var source = "https://www.youtube.com/embed/9ErrIkK9Y_s";
 // Get the video
 var video = document.getElementById("about_us_video");
 
@@ -64,16 +80,11 @@ var div = document.getElementsByClassName("about_us_video_section")[0];
 var img = document.getElementById("about_us_image");
 // Pause and play the video, and change the button text
 function playVideo() {
-    if (video_node.paused) {
+    btn.addEventListener("click", () => {
         div.replaceChild(video_node, img);
-        video_node.controls = true;
+        video_node.src = source + '?autoplay=1 allowfullscreen';
         btn.removeChild(img_btn);
-        video_node.play();
-    }
-    // } else {
-    //     video_node.pause();
-    //     img_btn.src = "img/play_video_icon.jpg";
-    // }
+    }, false);
 }
 
 // When the user scrolls the page, execute myFunction
@@ -85,3 +96,44 @@ function myFunction() {
     var scrolled = (winScroll / height) * 100;
     document.getElementById("myBar").style.width = scrolled + "%";
 }
+
+
+function showSubnavContent() {
+    const subnavbtn = document.querySelector('.subnavbtn');
+    if (subnavbtn.nextElementSibling.className === "subnav-content") {
+        subnavbtn.nextElementSibling.className += " subnav_display";
+    } else {
+        subnavbtn.nextElementSibling.className = "subnav-content";
+    }
+}
+
+function showSubnavContentQA() {
+    const subnavbtn = document.querySelector('.qa');
+    if (subnavbtn.nextElementSibling.className === "subnav-content_qa") {
+        subnavbtn.nextElementSibling.className += " subnav_display_qa";
+    } else {
+        subnavbtn.nextElementSibling.className = "subnav-content_qa";
+    }
+}
+
+
+function slickSliderToOne(x) {
+
+    if (x.matches) { // If media queries matches
+        $('.slick_slider').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: false,
+            centerPadding: '60px',
+            centerMode: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+    }
+}
+
+var x = window.matchMedia("(max-width: 600px)")
+x.addEventListener(slickSliderToOne);
+slickSliderToOne(x);

@@ -7,20 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AlAmineAcademy</title>
     <meta name="description" content="">
+    <meta name="author" content="Jonathan Moussa NDAO">
     <meta name="viewport" content="width=device+width, initial-scale=1">
+    <link rel="icon" href="{% static 'academy/img/logo.png' %}" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <!--- ===== Slick-Required_JQuery ===== ---->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!--- ===== Slick-css-files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick-theme.css' %}" />
+    <!--- ===== Bootstrap-css-files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/bootstrap/css/bootstrap.min.css' %}" />
     <!--- ===== My static files ===== ---->
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/main.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/aboutUs.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/course.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/ressource.css' %}" />
-    <!--- ===== Slick-css-files ===== ---->
-    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'academy/slick/slick-theme.css' %}" />
 </head>
 
 <body>
@@ -30,49 +34,55 @@
             <div class="progress-bar" id="myBar"></div>
         </div>
     </div>
-
-    <div class="navbar">
-        <a href="{% url 'homePage' %}" id="logo"><img src="{% static 'academy/img/logo.png' %}" alt="logo"></a>
-        <a href="{% url 'homePage' %}">Home</a>
-        <a href="#about_us">About Us</a>
-        <div class="subnav">
-            <button class="subnavbtn">Courses <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-                <a href="{% url 'coursePage' %}">Courses 01</a>
-                <a href="{% url 'coursePage' %}">Courses 02</a>
-                <a href="{% url 'coursePage' %}">Courses 03</a>
-                <a href="{% url 'coursePage' %}">Courses 04</a>
-                <a href="{% url 'coursePage' %}">Courses 05</a>
-                <a href="{% url 'coursePage' %}">Courses 06</a>
-                <a href="{% url 'coursePage' %}">Courses 07</a>
-                <a href="{% url 'coursePage' %}">Courses 08</a>
-                <a href="{% url 'coursePage' %}">Courses 09</a>
-                <a href="{% url 'coursePage' %}">Courses 10</a>
-                <a href="{% url 'coursePage' %}">Courses 11</a>
-                <a href="{% url 'coursePage' %}">Courses 12</a>
-            </div>
+    {% if not this_page %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="{% static 'academy/img/logo.png' %}" alt=AlAmineAcademy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="{% url 'homePage' %}" class="nav-link">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about_us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'coursePage' %}">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#programs">Programs</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Questions/Answers
+              </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Private</a>
+                        <a class="dropdown-item" href="#">Public </a>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <a href="#programs">Programs</a>
-        <div class="subnav">
-            <button class="subnavbtn">Question/Answer <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-                <a href="#">Question Public</a>
-                <a href="#">Question Private</a>
-            </div>
-        </div>
-    </div>
-
-    {% block content %}{% endblock content %}
+    </nav>
+    {% endif %} {% block content %}{% endblock content %}
 
     <footer class="bottom_line">
 
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'academy/bootstrap/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/myScript.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/slick/slick.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/app.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/script.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/ressource.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 </body>
 
 </html>

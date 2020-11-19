@@ -31,15 +31,16 @@
         <div id="dotsContainer"></div>
     </div>
 
-    <div class="research_bar">
-        <form action="" method="GET">
-            <input type="text" name="research" placeholder="Search..." />
+    <div class="research_bar row align-item-center">
+        <form class="form-inline col-md-8">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
-        <ul class="qux">
-            <li id="login"><a href="#">LOG IN</a></li>
-            <li id="signup"><a href="#">SIGN UP</a></li>
-        </ul>
+        <div class="col-md-4 mybtns">
+            <a href="#" class="btn btn-outline-primary my-auto" role="button">LOG IN</a>
+            <a href="#" class="btn btn-outline-secondary my-auto" role="button">SIGN UP</a>
+        </div>
     </div>
 
 
@@ -121,7 +122,7 @@
             <div class="about_us_video_section">
                 <img id="about_us_image" src="{% static 'academy/img/bg7.jpg' %}" alt="bg">
             </div>
-            <button id="play_video" onclick="playVideo()"><img id="play_video_img" src="{% static 'academy/img/play_video_icon.jpg' %}" alt="play"></button>
+            <button id="play_video" onclick="playVideo()"><img id="play_video_img" src="{% static 'academy/img/play_video_icon4.png' %}" alt="play"></button>
         </div>
     </div>
     <div class="about_us_see_more">
@@ -144,17 +145,17 @@
 
     <div class="top_container02">
         <h1>Playlist Videos</h1>
-        <div class="container">
+        <div class="my_container">
             <div class="slick_slider">
                 <!-------Slide 01-------->
                 <!----Slider Box---->
                 {% for playlist in playlists %}
-                    <div class="card">
+                    <div class="mycard">
                         <iframe controls class="box_video" src="{{ playlist.playlistUrl }}" style="border:none;">
                             {% comment %} <source src="{{ playlist.player.url }}" type="video/mp4"> {% endcomment %}
                         </iframe>
                         <div class="box_container">
-                            <h4><b>{{ playlist.playlistTitle.title }}</b></h4>
+                            <h4><b>{{ playlist.playlist.title }}</b></h4>
                             <p class="video_description"></p>
                         </div>
                     </div>
@@ -163,48 +164,38 @@
         </div>
     </div>
 
-    <div class="playlist_audio">
+    <div class="container-fluid playlist_audio">
         <h1>Playlist Audios</h1>
-        <div class="playlist_box">
-            <ul id="playlist">
-                <li class="playlist-item" onclick="playPause(0)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title audio_li"> The Title </span>
-                    <span class="audio_description audio_li"> ... The audio description ...</span>
-                    <span class="audio_duration audio_li"> 00:43</span>
-                </li>
-                <li class="playlist-item" onclick="playPause(1)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title"> The Title </span>
-                    <span class="audio_description"> ... The audio description ...</span>
-                    <span class="audio_duration"> 01:03</span>
-                </li>
-                <li class="playlist-item" onclick="playPause(2)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title"> The Title </span>
-                    <span class="audio_description"> ... The audio description ...</span>
-                    <span class="audio_duration"> 10:00</span>
-                </li>
-                <li class="playlist-item" onclick="playPause(3)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title"> The Title </span>
-                    <span class="audio_description"> ... The audio description ...</span>
-                    <span class="audio_duration"> 45:20</span>
-                </li>
-                <li class="playlist-item" onclick="playPause(4)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title"> The Title </span>
-                    <span class="audio_description"> ... The audio description ...</span>
-                    <span class="audio_duration"> 00:10</span>
-                </li>
-                <li class="playlist-item" onclick="playPause(5)">
-                    <i class="fa fa-play-circle fa-lg"></i>
-                    <span class="audio_title"> The Title </span>
-                    <span class="audio_description"> ... The audio description ...</span>
-                    <span class="audio_duration"> 00:43</span>
-                </li>
-            </ul>
-            <div class="audio_box">
+
+        <div class="container">
+        <div class="playlist_box row">
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+                    <small class="text-muted">00:43</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+                    <small class="text-muted">00:43</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </div>
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+                    <small class="text-muted">00:43</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </div>
+            </div>
+
+            <div class="audio_box col-lg-4">
                 <div id="image">
                     <img src="{% static 'academy/img/bg.jpg' %}" alt="audio-image">
                 </div>
@@ -222,6 +213,8 @@
                 </div>
             </div>
         </div>
+        </div>
+
     </div>
     
 
