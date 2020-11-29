@@ -1,0 +1,7 @@
+*.pyc
+.DS_Store
+a2cademy/media/
+a2cademy/academy/static/bootstrap/
+a2cademy/academy/static/img/
+a2cademy/academy/static/slick/
+

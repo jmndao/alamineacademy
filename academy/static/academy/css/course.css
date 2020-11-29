@@ -236,7 +236,7 @@ body {
    * Navbar
    */
 
-.navbar-brand {
+.navbar-brand.course_page {
     padding-top: .75rem;
     padding-bottom: .75rem;
     font-size: 1rem;
@@ -244,7 +244,7 @@ body {
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
-.navbar .navbar-toggler {
+.navbar .navbar-toggler.course_page {
     top: .25rem;
     right: 1rem;
 }
@@ -273,7 +273,7 @@ body {
     position: relative;
 }
 
-.image-view img {
+.course_image-view img {
     position: absolute;
     top: 0;
     left: 0;
@@ -282,14 +282,13 @@ body {
     opacity: .4;
 }
 
-.navbar {
+.navbar.navbar-dark {
     background-color: #2c3e50;
 }
 
 @media screen and (max-width: 600px) {
     #section-course-description {
         font-size: .75rem;
-        line-height: ;
     }
     #section-course-description h3 {
         font-size: 1rem;

@@ -1,11 +1,14 @@
 from django.http import Http404
 from django.template import RequestContext
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render 
+from django.shortcuts import render, get_object_or_404 
 from django.core.paginator import Paginator
 from .models import (YoutubeVideos,
                      YoutubePlaylistItem,
-                     YoutubePlaylist)
+                     YoutubePlaylist,
+                     SupportSingle,
+                     SupportCollection,
+                     AcademyModel)
 
 
 def handler404(request, exception):
@@ -79,6 +82,7 @@ class RessourceView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['program_title'] = self.program
+        context['nav'] = True
         if self.topUrl:
             context['video_screen_url'] = self.topUrl
         else:
@@ -97,14 +101,41 @@ class HomeView(ListView):
         return result
 
 
-# class CoursesView(ListView):
+class CoursesView(ListView):
 
-#     template_name = 'academy/course.html'
-
-def course(request):
-    context = {'this_page': True} 
-    return render(request, 'academy/course.html', context)
-
+    template_name = 'academy/course.html'
+    context_object_name = 'courses'
+    model = AcademyModel
+    
+    def get_queryset(self):
+        self.feed = None
+        self.ind = False
+        checklist = AcademyModel.objects.all()
+        req_feed = (self.kwargs['feed']).upper()
+        if req_feed in AcademyModel.CATEGORY_TYPE:
+            try:
+                self.feed = AcademyModel.objects.filter(category=req_feed)
+            except Exception as e:
+                pass
+        else:
+            self.ind = True
+            self.feed = get_object_or_404(AcademyModel, title=self.kwargs['feed'])
+        return self.feed
+        
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+        context['feed'] = self.feed
+        context['indicative'] = self.ind
+        context['this_page'] = True
+        return context
+            
+    
 
 def aboutUs(request):
     return render(request, 'academy/aboutUs.html', context={})
+
+    
+def qa(request):
+    return render(request, 'academy/qa.html', context={"nav": True})

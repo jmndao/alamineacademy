@@ -2,6 +2,9 @@ from django.db import models
 from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 
+from PIL import Image
+
+
 # Create your models here.
 
 
@@ -10,40 +13,79 @@ from embed_video.fields import EmbedVideoField
 #     return '{0}/{1}'.format(instance.file_type, filename)
 
 
-# class AcademyModel(models.Model):
+class SupportSingle(models.Model):
+    '''
+        A model that hold file by one and link to the SupportsModel in
+        order to create a hierarchical organization of multiple 
+        supports in one directory
 
-#     '''
-#         AcademyModel is the representative of differents feed 
-#         in AlAmineAcademy website that is designed to provide
-#         courses in islamic domains such as Seerah, Tawhid, etc 
-#         (see models.TextChoices)
+        -- title        : title of the course
+        -- description  : description of the course
+    '''
 
-#             -- category     : Category of course to provide
-#             -- title        : title of the course
-#             -- description  : description of the course
-#             -- file_type    : type of the file (audio or video)
-#             -- created_date : the date it is added in the site
-#     '''
+    title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250)
+    
+    def __str__(self):
+        return self.title
 
-#     CATEGORY_TYPE = [
-#         ('SEERAH', 'Seerah'),
-#         ('TAWHID', 'Tawhid'),
-#         ('HADITHS', 'Hadiths'),
-#         ('KHUTBA', 'Khutba'),
-#         ('FIQH', 'Fiqh'),
-#         ('TAFSIR', 'Tafsir'),
-#         ('BAYANE', 'Bayane')
-#     ]
+class SupportCollection(models.Model):
 
-#     category = models.CharField(blank=True, choices=CATEGORY_TYPE, max_length=10)
-#     title = models.CharField(max_length=50, blank=False, null=False)
-#     description = models.TextField()
-#     file_type_choices = models.TextChoices('audio', 'video')
-#     file_type = models.CharField(blank=True, choices=file_type_choices.choices, max_length=10)
-#     upload = models.FileField(upload_to=file_directory_path)
-#     created_date = models.DateTimeField(default=timezone.now)
+    support_single = models.ForeignKey(
+        SupportSingle, on_delete=models.CASCADE, related_name="support"
+    )
+    supports_dir = models.FileField(upload_to='supports/', null=True)
+
+    def __str__(self):
+        return self.support_single.title
 
 
+class AcademyModel(models.Model):
+
+    '''
+        AcademyModel is the representative of differents feed 
+        in AlAmineAcademy website that is designed to provide
+        courses in islamic domains such as Seerah, Tawhid, etc 
+        (see models.TextChoices)
+
+            -- category     : Category of course to provide
+            -- title        : title of the course
+            -- description  : description of the course
+            -- created_date : the date it is added in the site
+    '''
+
+    CATEGORY_TYPE = [
+        ('SEERAH', 'Seerah'),
+        ('TAWHID', 'Tawhid'),
+        ('HADITHS', 'Hadiths'),
+        ('KHUTBA', 'Khutba'),
+        ('FIQH', 'Fiqh'),
+        ('TAFSIR', 'Tafsir'),
+        ('BAYANE', 'Bayane')
+    ]
+
+    title = models.CharField(max_length=250)
+    description = models.TextField(default=None)
+    price = models.DecimalField(max_digits=10, decimal_places=6)
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPE)
+    thumbnail = models.ImageField(upload_to='thumbnails/', null=True)
+    videos_dirs = models.FileField(
+        upload_to='videos/', null=True, verbose_name="Videos")
+    supports_dirs = models.ForeignKey(
+        SupportCollection, default=None, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+    
+    def save(self):
+        super().save()
+        
+        img = Image.open(self.thumbnail.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.thumbnail.path)
 
 class AcademyPublicQuestion(models.Model):
     '''
@@ -57,8 +99,10 @@ class AcademyPublicQuestion(models.Model):
         -- date_posted      : the date the question was asked
     '''
 
+    username  = models.CharField(max_length=50)
     questionText = models.TextField()
     datePosted = models.DateTimeField(auto_now_add=True)
+
 
 class AcademyPublicAnswer(models.Model):
     '''
@@ -74,14 +118,14 @@ class AcademyPublicAnswer(models.Model):
 
     '''
 
-    question = models.ForeignKey(AcademyPublicQuestion, on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        AcademyPublicQuestion, on_delete=models.CASCADE)
     answer = models.TextField()
     answerDate = models.DateTimeField(auto_now_add=True)
-    
 
 
 class AcademyPrivateQuestion(models.Model):
-    
+
     '''
         AcademyPrivateQA is a model that describe a Private 
         platform for Question and Answer.
@@ -96,7 +140,8 @@ class AcademyPrivateQuestion(models.Model):
 
     SEXES = (
         ('F', 'Female'),
-        ('M', 'Male')
+        ('M', 'Male'),
+        ('N', 'Neutral')
     )
 
     question_text = models.TextField()
@@ -117,31 +162,34 @@ class AcademyPrivateAnswer(models.Model):
 
     '''
 
-    question = models.ForeignKey(AcademyPrivateQuestion, on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        AcademyPrivateQuestion, on_delete=models.CASCADE)
     answer = models.TextField()
     answerDate = models.DateTimeField(auto_now_add=True)
+
 
 class YoutubePlaylist(models.Model):
     '''
         A model that record playlists
-        
+
         -- title        : title of the playlist
     '''
-    
+
     title = models.CharField(max_length=100)
-    
+
     def __str__(self):
         return self.title
+
 
 class YoutubePlaylistItem(models.Model):
     '''
         A model that keep track of videos' playlist then 
         indicates in which category (see below list) the 
         playlist belongs to.
-        
+
         -- title        : title of the playlist
         -- category     : category to which belongs the playlist
-        
+
     '''
     CATEGORY_TYPE = [
         ('SEERAH', 'Seerah'),
@@ -152,31 +200,31 @@ class YoutubePlaylistItem(models.Model):
         ('TAFSIR', 'Tafsir'),
         ('BAYANE', 'Bayane')
     ]
-    
+
     category = models.CharField(max_length=10, choices=CATEGORY_TYPE)
     playlist = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
-    playlistUrl = EmbedVideoField()
-    
+    playlistUrl = EmbedVideoField(default=None, blank=True)
+
 
 class YoutubeVideos(models.Model):
-    
+
     '''
         A model that held record of youtube videos on the
         website via the django-embed-video framework. 
         We'll be able to embed youtube video in the website
         easily with track of their playlist too. 
-        
+
         -- title        : title of the video
         -- description  : description of the video
         -- videos       : videos' urls
         -- playlist     : each video belongs to a playlist
                           (YoutubePlaylist_class)
     '''
-    
+
     title = models.CharField(max_length=100)
     description = models.TextField()
     videoUrl = EmbedVideoField()
     playlist = models.ForeignKey(YoutubePlaylist, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.title

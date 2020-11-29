@@ -164,7 +164,7 @@
         </div>
     </div>
 
-    <div class="container-fluid playlist_audio">
+    <div class="playlist_audio">
         <h1>Playlist Audios</h1>
 
         <div class="container">
@@ -194,28 +194,24 @@
                     <small class="text-muted">Donec id elit non mi porta.</small>
                 </div>
             </div>
-
-            <div class="audio_box col-lg-4">
-                <div id="image">
-                    <img src="{% static 'academy/img/bg.jpg' %}" alt="audio-image">
-                </div>
-                <div id="player">
-                    <div id="songTitle">Hello World</div>
-                    <div id="audio_btns">
-                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" height="20px" width="20px"></button>
-                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
-                        <button id="next"><img src="{% static 'academy/img/next.png' %}" height="20px" width="20px"></button>
-                    </div>
-                    <div id="seek-bar">
-                        <div id="fill"></div>
-                        <div id="handle"></div>
-                    </div>
-                </div>
-            </div>
         </div>
         </div>
 
     </div>
+    <div class="audio_box">
+                <div id="player">
+                    <div id="songTitle">Hello World</div>
+                    <div id="seek-bar">
+                        <div id="fill"></div>
+                        <div id="handle"></div>
+                    </div>
+                    <div id="audio_btns">
+                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" ></button>
+                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
+                        <button id="next"><img src="{% static 'academy/img/next.png' %}"></button>
+                    </div>
+                </div>
+            </div>
     
 
 {% endblock content %}
