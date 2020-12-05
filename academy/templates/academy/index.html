@@ -1,217 +1,224 @@
-{% extends "academy/base.html" %}
-{% load static %}
+{% extends "academy/base.html" %} {% load static %} {% load i18n %} {% load account socialaccount %} {% block nav_item %}
+<li class="nav-item">
+    <a class="nav-link" href="#about_us">About Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#programs">Programs</a>
+</li>
+{% endblock nav_item %} {% block content %}
 
-{% block content %}
- 
-    <div class="galleryContainer">
-        <div class="slideShowContainer">
-            <div id="playPausen"></div>
-            <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
-            <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
-            <div class="captionTextHolder">
-                <p class="captionText slideTextFromTop"></p>
-            </div>
-            <div class="imageHolder">
-                <img src="{% static 'academy/img/bg9.jpg' %}">1366X768
-                <p class="captionText">Caption Text-01</p>
-            </div>
-            <div class="imageHolder">
-                <img src="{% static 'academy/img/bg5.jpg' %}">
-                <p class="captionText">Caption Text-02</p>
-            </div>
-            <div class="imageHolder">
-                <img src="{% static 'academy/img/bg3.jpg' %}">
-                <p class="captionText">Caption Text-03</p>
-            </div>
-            <div class="imageHolder">
-                <img src="{% static 'academy/img/bg4.jpg' %}">
-                <p class="captionText">Caption Text-04</p>
-            </div>
+<div class="galleryContainer">
+    <div class="slideShowContainer">
+        <div id="playPausen"></div>
+        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+        <div class="captionTextHolder">
+            <p class="captionText slideTextFromTop"></p>
         </div>
-        <div id="dotsContainer"></div>
-    </div>
-
-    <div class="research_bar row align-item-center">
-        <form class="form-inline col-md-8">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
-        <div class="col-md-4 mybtns">
-            <a href="#" class="btn btn-outline-primary my-auto" role="button">LOG IN</a>
-            <a href="#" class="btn btn-outline-secondary my-auto" role="button">SIGN UP</a>
+        <div class="imageHolder">
+            <img src="{% static 'academy/img/bg9.jpg' %}">1366X768
+            <p class="captionText">Caption Text-01</p>
+        </div>
+        <div class="imageHolder">
+            <img src="{% static 'academy/img/bg5.jpg' %}">
+            <p class="captionText">Caption Text-02</p>
+        </div>
+        <div class="imageHolder">
+            <img src="{% static 'academy/img/bg3.jpg' %}">
+            <p class="captionText">Caption Text-03</p>
+        </div>
+        <div class="imageHolder">
+            <img src="{% static 'academy/img/bg4.jpg' %}">
+            <p class="captionText">Caption Text-04</p>
         </div>
     </div>
+    <div id="dotsContainer"></div>
+</div>
 
+<div class="research_bar row align-item-center">
+    <form class="form-inline col-md-8">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 
-    <div class="programs_wrapper" id="programs">
-        <h2>Programs</h2>
-
-        <div class="program_row">
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'tawhid' %}">Tahwid</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-
-        </div>
-
-        <div class="program_row">
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'khutba' %}">Khutbahs</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-        </div>
-
-        <div class="program_row">
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'bayane' %}">Bayane</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-
-            <div class="program_card">
-                <div class="program_head">
-                    <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
-                    <h3><a href="{% url 'ressourcePage' 'seerah' %}">Seerah</a></h3>
-                </div>
-                <p class="program_body">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                </p>
-            </div>
-        </div>
+    <div class="col-md-4 mybtns">
+        {% if user.is_authenticated %}
+        <a href="{% url 'account_email' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">E-MAIL</a>
+        <a href="{% url 'account_logout' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">SIGN OUT</a> {% else %}
+        <a href="{% url 'account_login' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">LOG IN</a>
+        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">SIGN UP</a> {% endif %}
     </div>
+</div>
 
-    <div class="about_us_head about_us_head_index" id="about_us">
-        <h3>About Us</h3>
-    </div>
 
-    <div class="about_us_section">
-        <div class="about_us_presentation">
-            <div class="about_us_video_section">
-                <img id="about_us_image" src="{% static 'academy/img/bg7.jpg' %}" alt="bg">
+<div class="programs_wrapper" id="programs">
+    <h2>Programs</h2>
+
+    <div class="program_row">
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh</a></h3>
             </div>
-            <button id="play_video" onclick="playVideo()"><img id="play_video_img" src="{% static 'academy/img/play_video_icon4.png' %}" alt="play"></button>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
         </div>
-    </div>
-    <div class="about_us_see_more">
-        <p><a href="{% url 'aboutUsPage' %}"> See more...</a></p>
-    </div>
-
-
-    <div class="daily_hadith_section">
-        <h1>Daily Hadith</h1>
-        <div class="hadith_section">
-            <div class="hadith_text">
-
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'tawhid' %}">Tahwid</a></h3>
             </div>
-            <div class="hadith_document">
-
-            </div>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
         </div>
 
     </div>
 
-    <div class="top_container02">
-        <h1>Playlist Videos</h1>
-        <div class="my_container">
-            <div class="slick_slider">
-                <!-------Slide 01-------->
-                <!----Slider Box---->
-                {% for playlist in playlists %}
-                    <div class="mycard">
-                        <iframe controls class="box_video" src="{{ playlist.playlistUrl }}" style="border:none;">
+    <div class="program_row">
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir</a></h3>
+            </div>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
+        </div>
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'khutba' %}">Khutbahs</a></h3>
+            </div>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
+        </div>
+    </div>
+
+    <div class="program_row">
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'bayane' %}">Bayane</a></h3>
+            </div>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
+        </div>
+
+        <div class="program_card">
+            <div class="program_head">
+                <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
+                <h3><a href="{% url 'ressourcePage' 'seerah' %}">Seerah</a></h3>
+            </div>
+            <p class="program_body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="about_us_head about_us_head_index" id="about_us">
+    <h3>About Us</h3>
+</div>
+
+<div class="about_us_section">
+    <div class="about_us_presentation">
+        <div class="about_us_video_section">
+            <img id="about_us_image" src="{% static 'academy/img/bg7.jpg' %}" alt="bg">
+        </div>
+        <button id="play_video" onclick="playVideo()"><img id="play_video_img" src="{% static 'academy/img/play_video_icon4.png' %}" alt="play"></button>
+    </div>
+</div>
+<div class="about_us_see_more">
+    <p><a href="{% url 'aboutUsPage' %}"> See more...</a></p>
+</div>
+
+
+<div class="daily_hadith_section">
+    <h1>Daily Hadith</h1>
+    <div class="hadith_section">
+        <div class="hadith_text">
+
+        </div>
+        <div class="hadith_document">
+
+        </div>
+    </div>
+
+</div>
+
+<div class="top_container02">
+    <h1>Playlist Videos</h1>
+    <div class="my_container">
+        <div class="slick_slider">
+            <!-------Slide 01-------->
+            <!----Slider Box---->
+            {% for playlist in playlists %}
+            <div class="mycard">
+                <iframe controls class="box_video" src="{{ playlist.playlistUrl }}" style="border:none;">
                             {% comment %} <source src="{{ playlist.player.url }}" type="video/mp4"> {% endcomment %}
                         </iframe>
-                        <div class="box_container">
-                            <h4><b>{{ playlist.playlist.title }}</b></h4>
-                            <p class="video_description"></p>
-                        </div>
-                    </div>
-                {% endfor %}
+                <div class="box_container">
+                    <h4><b>{{ playlist.playlist.title }}</b></h4>
+                    <p class="video_description"></p>
+                </div>
             </div>
+            {% endfor %}
         </div>
     </div>
+</div>
 
-    <div class="playlist_audio">
-        <h1>Playlist Audios</h1>
+<div class="playlist_audio">
+    <h1>Playlist Audios</h1>
 
-        <div class="container">
+    <div class="container">
         <div class="playlist_box row">
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
                     <small class="text-muted">00:43</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+            </div>
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
                     <small class="text-muted">00:43</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+            </div>
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
                     <small class="text-muted">00:43</small>
-                    </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
                 </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
             </div>
         </div>
-        </div>
-
     </div>
-    <div class="audio_box">
-                <div id="player">
-                    <div id="songTitle">Hello World</div>
-                    <div id="seek-bar">
-                        <div id="fill"></div>
-                        <div id="handle"></div>
-                    </div>
-                    <div id="audio_btns">
-                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" ></button>
-                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
-                        <button id="next"><img src="{% static 'academy/img/next.png' %}"></button>
-                    </div>
-                </div>
-            </div>
-    
+</div>
+
+</div>
+<div class="audio_box">
+    <div id="player">
+        <div id="songTitle">Hello World</div>
+        <div id="seek-bar">
+            <div id="fill"></div>
+            <div id="handle"></div>
+        </div>
+        <div id="audio_btns">
+            <button id="pre"><img src="{% static 'academy/img/prev.png' %}" ></button>
+            <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
+            <button id="next"><img src="{% static 'academy/img/next.png' %}"></button>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}

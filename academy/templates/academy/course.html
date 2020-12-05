@@ -1,268 +1,306 @@
-{% extends "academy/base.html" %} {% load static %} {% block content %}
+{% load static %} {% load i18n %} {% load account socialaccount %}
 
-<!--------------------------------------------------------------->
-<style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-    
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-            font-size: 3.5rem;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AlAmineAcademy</title>
+    <meta name="description" content="">
+    <meta name="author" content="Jonathan Moussa NDAO">
+    <meta name="viewport" content="width=device+width, initial-scale=1">
+    <link rel="icon" href="{% static 'academy/img/logo.png' %}" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <!--- ===== Bootstrap-css-files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/bootstrap/css/bootstrap.min.css' %}" />
+    <!--- ===== My static files ===== ---->
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/course.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/main.css' %}" />
+</head>
+
+<body>
+    <!--------------------------------------------------------------->
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-    }
-</style>
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
 
-<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand course_page col-md-3 col-lg-2 mr-0 px-3" href="#">Al Amine Academy</a>
-    <button class="navbar-toggler course_page position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand course_page col-md-3 col-lg-2 mr-0 px-3" href="#">Al Amine Academy</a>
+        <button class="navbar-toggler course_page position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{% url 'homePage' %}">Go Home</a>
-        </li>
-    </ul>
-</nav>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="{% url 'homePage' %}">Go Home</a>
+            </li>
+        </ul>
+    </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="package"></span> Fiqh
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="package"></span> Tafsir
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="package"></span> Hadiths
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="package"></span> Seerah
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="package"></span> Tawhid
-                        </a>
-                    </li>
-                </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="package"></span> Fiqh
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="package"></span> Tafsir
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="package"></span> Hadiths
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="package"></span> Seerah
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="package"></span> Tawhid
+                            </a>
+                        </li>
+                    </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Lectures</span>
-                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 01
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Lectures</span>
+                        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 02
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 03
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 03
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 04
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span> La Vie du Prophète 05
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 01
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 02
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 03
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 03
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 04
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span> La Vie du Prophète 05
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Seerah</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">See</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                {% if messages %} {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+                <div>
+                    {% endif %}
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">{{category}}</h1>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">See</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
           <span data-feather="calendar"></span>
           Take
         </button>
-                </div>
-            </div>
-            <!--------------------Actual Content----------------------------->
-
-            <div class="jumbotron">
-                <div class="course_image-view">
-                    <img src="{% static 'academy/img/bg4.jpg' %}" alt="AlAmineAcademy">
-                </div>
-                <h1 class="display-4">La Vie du Prophète</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            </div>
-
-            <div id="section-course-description">
-                <div class="course-description">
-                    <div class="explanation">
-                        <h3>Explanation: </h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit porro repudiandae officiis sint iste laboriosam sunt reprehenderit corporis asperiores! Non amet ad quidem cum id! Aliquid nam ipsum tempora consectetur.
-                        </p>
+                        </div>
                     </div>
-                    <div class="course-hour">
-                        <h3>Course-hours:</h3>
-                        <p> This course should normally take: 01:30 hour per day</p>
-                        <p> And for 24 days </p>
-                        <p> Averall: amount</p>
+                    <!--------------------Actual Content----------------------------->
+
+                    <div class="jumbotron">
+                        <div class="course_image-view">
+                            <img src="{% static 'academy/img/bg4.jpg' %}" alt="AlAmineAcademy">
+                        </div>
+                        <h1 class="display-4">La Vie du Prophète</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
                     </div>
-                    <div class="sign-up">
-                        <span>Already have an account <a href="#">...</a> ? <a href="#">Sign-Up !</a></span>
+
+                    <div id="section-course-description">
+                        <div class="course-description">
+                            <div class="explanation">
+                                <h3>Explanation: </h3>
+                                <p>
+                                    {{feed00.description}}
+                                </p>
+                            </div>
+                            <div class="course-hour">
+                                <h3>Course-hours:</h3>
+                                <p> This course should normally take: 01:30 hour per day</p>
+                                <p> And for 24 days </p>
+                                <p> Averall: {{feed00.price}}$</p>
+                            </div>
+                        </div>
+                        <div class="course-presentation">
+                            <img src=" {{feed00.thumbnail.url}}" alt="">
+                        </div>
+
                     </div>
-                </div>
-                <div class="course-presentation">
-                    <img src="" alt="">
-                </div>
 
+                    <div class="view-others">
+                        <h3>Others</h3>
+                        <ul id="courses">
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                            <li class="course-item">
+                                <div class="course-doc">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="course-desc">
+                                    <p class="course-desc-title">Document-01</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
+                                        blanditiis. Ea.
+                                    </p>
+                                </div>
+                                <div class="course-offer">
+                                    <p>Price: $10.11</p>
+                                    <button class="take-btn"><a href="#">Take</a></button>
+                                    <button class="see-btn"><a href="#">See</a></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--------------------End Of Actual Content----------------------------->
+            </main>
             </div>
+        </div>
 
-            <div class="view-others">
-                <h3>Others</h3>
-                <ul id="courses">
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                    <li class="course-item">
-                        <div class="course-doc">
-                            <img src="" alt="">
-                        </div>
-                        <div class="course-desc">
-                            <p class="course-desc-title">Document-01</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus, blanditiis.
-                                Ea.
-                            </p>
-                        </div>
-                        <div class="course-offer">
-                            <p>Price: $10.11</p>
-                            <button class="take-btn"><a href="#">Take</a></button>
-                            <button class="see-btn"><a href="#">See</a></button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <footer class="bottom_line">
 
-            <!--------------------End Of Actual Content----------------------------->
-        </main>
-    </div>
-</div>
+        </footer>
 
 
 
-{% endblock content %}
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'academy/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
+
+</html>

@@ -2,7 +2,11 @@ from django import forms
 from django.utils.translation import gettext as _
 
 
-from .models import SupportSingle, SupportCollection
+from .models import (SupportSingle, 
+                     SupportCollection,
+                     AcademyPublicQuestion,
+                     AcademyPrivateQuestion
+)
 
 
 class SupportAdminForm(forms.ModelForm):
@@ -24,3 +28,12 @@ class SupportAdminForm(forms.ModelForm):
         for upload in self.files.getlist("supports"):
             support = SupportCollection(support_single=support_single, supports_dir=upload)
             support.save()
+
+class QAPForm(forms.ModelForm):
+    
+    class Meta:
+        model = AcademyPublicQuestion
+        fields = (
+            "username",
+            "questionText"
+        )

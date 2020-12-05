@@ -1,6 +1,15 @@
 {% extends "academy/base.html" %}
 {% load static %}
 
+{% block nav_item %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'aboutUsPage' %}">About Us</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'ressourcePage' 'fiqh' %}">Programs</a>
+    </li>
+{% endblock nav_item %}
+
 {% block content %}
     <div class="image-view">
    

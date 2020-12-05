@@ -34,7 +34,7 @@ class SupportCollection(models.Model):
     support_single = models.ForeignKey(
         SupportSingle, on_delete=models.CASCADE, related_name="support"
     )
-    supports_dir = models.FileField(upload_to='supports/', null=True)
+    supports_dir = models.FileField(upload_to='supports/', null=True, verbose_name="Supports")
 
     def __str__(self):
         return self.support_single.title

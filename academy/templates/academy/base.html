@@ -49,23 +49,9 @@
                 <li class="nav-item active">
                     <a href="{% url 'homePage' %}" class="nav-link">Home<span class="sr-only">(current)</span></a>
                 </li>
-                {% if ressource.nav or nav %}
+                {% block nav_item %}{% endblock nav_item %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'aboutUsPage' %}">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'ressourcePage' 'tawhid' %}">Programs</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#about_us">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#programs">Programs</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'coursePage' 'seerah' %}">Courses</a>
+                    <a class="nav-link" href="{% url 'courseViewPage' %}">Courses</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,6 +66,7 @@
             </ul>
         </div>
     </nav>
+    {% endif %}
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,7 +79,8 @@
               </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/get_qap/" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Recipient:</label>
                             <input type="text" class="form-control" id="recipient-name">
@@ -110,7 +98,7 @@
             </div>
         </div>
     </div>
-    {% endif %} {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
 
     <footer class="bottom_line">
 
@@ -127,7 +115,5 @@
     <script type="text/javascript" src="{% static 'academy/js/qa.js' %}"></script>
 
 </body>
-
-</html>
 
 </html>

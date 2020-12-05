@@ -1,5 +1,11 @@
-{% extends "academy/base.html" %} {% load static %} {% block content %}
-
+{% extends "academy/base.html" %} {% load static %} {% block nav_item %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'aboutUsPage' %}">About Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'ressourcePage' 'fiqh' %}">Programs</a>
+</li>
+{% endblock nav_item %} {% block content %}
 <!--------------------------------------------------------------->
 <style>
     .bd-placeholder-img {
@@ -61,8 +67,8 @@
                 </p>
             </div>
             <small class="d-block text-right mt-3 ">
-        <a href="# ">See All</a>
-      </small>
+                <a href="# " >Ask One </a>
+            </small>
         </div>
 
         <div class="my-3 p-3 bg-white rounded shadow-sm ">

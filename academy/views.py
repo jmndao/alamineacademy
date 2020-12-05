@@ -1,8 +1,13 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render, get_object_or_404 
+from django.shortcuts import render, get_object_or_404, get_list_or_404 
 from django.core.paginator import Paginator
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+
+from .forms import QAPForm
 from .models import (YoutubeVideos,
                      YoutubePlaylistItem,
                      YoutubePlaylist,
@@ -109,29 +114,41 @@ class CoursesView(ListView):
     
     def get_queryset(self):
         self.feed = None
-        self.ind = False
+        self.feed00 = None
         checklist = AcademyModel.objects.all()
+        # choice of the feed as requested by the client            
         req_feed = (self.kwargs['feed']).upper()
-        if req_feed in AcademyModel.CATEGORY_TYPE:
-            try:
-                self.feed = AcademyModel.objects.filter(category=req_feed)
-            except Exception as e:
-                pass
-        else:
-            self.ind = True
-            self.feed = get_object_or_404(AcademyModel, title=self.kwargs['feed'])
+        # putting all available category into a list
+        category = [it[0] for it in AcademyModel.CATEGORY_TYPE]
+        # if the request is in the list of available category
+        # we retrieve all elements in order to post it else we send 404 error
+        if req_feed in category:
+            self.feed = get_list_or_404(AcademyModel, category=req_feed)
+
+        # Take out the latest element so to Puts it's description
+        # start of crappy test code
+        if self.feed:
+            self.feed00 = self.feed[0]
+        # end of crappy test code
+        self.req_feed = req_feed.capitalize()
+        # now the feed is all except the latest which one we picked out of.
+        # self.feed = self.feed[1:-1]
         return self.feed
         
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in the publisher
+        context['category'] = self.req_feed
         context['feed'] = self.feed
-        context['indicative'] = self.ind
+        context['feed00'] = self.feed00
         context['this_page'] = True
         return context
-            
-    
+
+@login_required
+def courseView(request):
+
+    return render(request, 'academy/course.html', context={})
 
 def aboutUs(request):
     return render(request, 'academy/aboutUs.html', context={})
@@ -139,3 +156,22 @@ def aboutUs(request):
     
 def qa(request):
     return render(request, 'academy/qa.html', context={"nav": True})
+
+
+def get_qap(request):
+    
+    if request.method == "POST":
+        form = QAPForm(request.POST)
+        
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            question = form.cleaned_data["questionText"]
+            apq = AcademyPublicQuestion(username=username, questionText=question)
+            apq.save()
+            
+            return HttpResponseRedirect(reverse('homePage'))
+        
+    else:
+        form =  QAPForm()
+            
+    return render(request, 'academy/index.html', context=None)

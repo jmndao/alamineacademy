@@ -38,12 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Adding our apps...
     'academy.apps.AcademyConfig',
+    'users.apps.UsersConfig',
     # Adding the DRF app...
     'rest_framework',
     # Adding django-embed-videos for yt videos
     'embed_video',
+    # Adding django-allauth for users authentications
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -132,9 +139,44 @@ MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL   = '/media/'
 
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = 'homePage'
+
+
+ACCOUNT_FORMS = {'login': 'users.forms.MyCustomLoginForm',
+                 'signup': 'users.forms.MyCustomSignupForm',
+                 'reset_password': 'users.forms.MyCustomResetPasswordForm',
+                 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Django-embed-video
 # To detect http/s we must use request context processor
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+
+
+# Client_ID = "618282340169-jt6doo79a80tgd8j497qr9d8f2uvu3oh.apps.googleusercontent.com"
+
+# Client_Secret = "ZM_2wuNP9hfcXUtgeCI7d1tw"
