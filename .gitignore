@@ -1,10 +1,9 @@
 *.pyc
 .DS_Store
 a2cademy/media/
-academy/static/bootstrap/
-academy/static/img/
-academy/static/slick/
-
+a2cademy/academy/static/bootstrap/
+a2cademy/academy/static/img/
+a2cademy/academy/static/slick/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
