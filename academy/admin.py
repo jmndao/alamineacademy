@@ -3,7 +3,6 @@ from embed_video.admin import AdminVideoMixin
 from django.template.loader import get_template
 from django.utils.translation import gettext as _
 
-from .forms import SupportAdminForm
 from .models import (YoutubeVideos,
                      YoutubePlaylistItem,
                      YoutubePlaylist,
@@ -13,24 +12,27 @@ from .models import (YoutubeVideos,
                      AcademyPublicQuestion,
                      SupportSingle,
                      SupportCollection,
-                     AcademyModel
+                     AcademyModel,
                      )
+
 
 # Register your models here.
 
 
-class SupportInline(admin.TabularInline):
-    model = SupportCollection
+class SupportInline(admin.StackedInline):
+    model = SupportSingle
 
 
-@admin.register(SupportSingle)
+@admin.register(SupportCollection)
 class SupportAdmin(admin.ModelAdmin):
-    form = SupportAdminForm
     inlines = [SupportInline]
-
-    def save_related(self, request, form, formsets, change):
-        super().save_related(request, form, formsets, change)
-        form.save_photos(form.instance)
+    
+    class Meta:
+       model = SupportCollection
+ 
+@admin.register(SupportSingle)
+class SupportInline(admin.ModelAdmin):
+    pass
 
 class YoutubeAdmin(AdminVideoMixin, admin.ModelAdmin):
     pass
@@ -42,5 +44,5 @@ admin.site.register(AcademyPublicQuestion)
 admin.site.register(YoutubePlaylist)
 admin.site.register(YoutubeVideos, YoutubeAdmin)
 admin.site.register(YoutubePlaylistItem, YoutubeAdmin)
-admin.site.register(SupportCollection)
 admin.site.register(AcademyModel)
+

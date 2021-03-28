@@ -53,9 +53,11 @@ html {
 /*------------------------------------------------*/
 
 .research_bar {
-    height: 60px;
+    height: auto;
     width: 100%;
     background-color: #2c3e50;
+    margin-left: 0;
+    padding: 5px;
 }
 
 .research_bar .form-inline {
@@ -75,26 +77,30 @@ html {
 /* ----------------------------------------------- */
 
 .programs_wrapper h2 {
-    margin-top: 30px;
+    margin-top: 1rem;
     text-align: center;
     color: #2c3e50;
-    height: 100px;
+    height: 4rem;
     font-size: 50px;
     width: 100%;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .program_logo {
-    width: 100px;
-    height: 100px;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50% 50%;
     padding: 3px 3px;
 }
 
+.program_container {
+    margin: 2rem 0;
+}
+
 .program_row {
     display: flex;
-    justify-content: space-around;
-    margin: 50px 0;
+    justify-content: space-evenly;
+    margin: 1rem .8rem;
 }
 
 .program_head {
@@ -103,16 +109,17 @@ html {
 }
 
 .program_card {
-    width: 500px;
-    padding: 20px 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    width: 34rem;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.3);
     background-color: #fff;
 }
 
 .program_card:hover {
     transition: box-shadow 300ms ease-in;
     background-color: #eee;
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1rem 1.1rem rgba(0, 0, 0, 0.3);
     color: #2c3e50;
 }
 
@@ -123,7 +130,7 @@ html {
 
 .program_head a {
     text-decoration: none;
-    font-size: 30px;
+    font-size: 1.8rem;
     color: #000;
 }
 
@@ -144,7 +151,7 @@ html {
 .about_us_see_more a {
     text-decoration: none;
     color: inherit;
-    font-size: 25px;
+    font-size: 1.8rem;
     font-weight: 500;
 }
 
@@ -297,202 +304,33 @@ html {
 
 .playlist_box {
     width: 100%;
-    height: 400px;
-}
-
-.playlist_box:after {
-    clear: both;
-    content: "";
-    display: block;
-}
-
-.playlist_box #playlist,
-.playlist_box .audio_box {
-    float: left;
-    padding: 1%;
-}
-
-#playlist {
-    width: 56%;
-    margin: 1%;
-    /* background-color: #eee; */
-}
-
-#playlist li {
-    list-style: none;
-    height: 60px;
-    padding: 5px 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.audio_box {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    box-shadow: 2px 10px 12px rgba(0, 0, 0, .1);
-}
-
-#player {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 25px;
-    color: #333;
-    position: relative;
-}
-
-#songTitle {
-    text-align: center;
-    color: #333;
-    font-family: monospace, sans-serif;
-    font-size: 20px;
-}
-
-#audio_btns {
-    height: 50px;
-    width: 30%;
-    position: relative;
-}
-
-#play,
-#next,
-#pre {
-    width: 50px;
-    height: 50px;
-    border: 0;
-    background-color: #eee;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#play img {
-    width: 50px;
-    height: 50px;
-}
-
-#next {
-    width: 30px;
-    height: 30px;
-    left: 70%;
-}
-
-#pre {
-    width: 30px;
-    height: 30px;
-    left: 30%;
-}
-
-#play img,
-#next img,
-#pre img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#next img {
-    width: 20px;
-    height: 20px;
-}
-
-#pre img {
-    width: 20px;
-    height: 20px;
-}
-
-#seek-bar {
-    width: 50%;
-    height: 5px;
-    background-color: grey;
-    display: flex;
-    border-radius: 50px;
-    margin-left: 25px;
-    cursor: pointer;
-}
-
-#fill {
-    height: 5px;
-    width: 10px;
-    background-color: #2c3e50;
-    border-radius: 20px;
-}
-
-#handle {
-    width: 8px;
-    height: 8px;
-    background-color: #2c3e50;
-    border-radius: 50%;
-    margin-left: -5px;
-    transform: scale(2);
+    height: auto;
 }
 
 
 /*--------------------------------------*/
 
 .bottom_line {
-    height: 300px;
-    width: 100%;
+    height: auto;
     background-color: #2c3e50;
-    margin-top: 100px;
+    margin-top: 1rem;
 }
 
-@media screen and (max-width: 600px) {
-    .audio_box {
-        height: 60px;
-    }
-    #songTitle {
-        font-size: 14px;
-    }
-    #audio_btns {
-        height: 30px;
-    }
-    #play,
-    #next,
-    #pre {
-        width: 20px;
-        height: 20px;
-    }
-    #play img {
-        width: 20px;
-        height: 20px;
-    }
-    #next {
-        width: 15px;
-        height: 15px;
-    }
-    #pre {
-        width: 15px;
-        height: 15px;
-    }
-    #next img {
-        width: 15px;
-        height: 15px;
-    }
-    #pre img {
-        width: 15px;
-        height: 15px;
-    }
-    #seek-bar {
-        height: 3px;
-    }
-    #fill {
-        height: 3px;
-    }
-    #handle {
-        width: 5px;
-        height: 5px;
-    }
+.bottom_line h5 {
+    color: #fff;
+}
+
+.footer_img {
+  margin-top: 20%;
+  margin-left: 2rem;
+}
+.divider_hr {
+  background-color: #eee;
+  width: 50%;
+  height: .15rem;
+}
+.bottom_line li, .bottom_line .text-muted  {
+    color: #eee;
 }
 
 
@@ -504,7 +342,7 @@ html {
 
 /*------ Body: -------*/
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .research_bar {
         display: flex;
         flex-direction: column;

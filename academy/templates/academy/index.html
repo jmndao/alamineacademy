@@ -36,86 +36,88 @@
 </div>
 
 <div class="research_bar row align-item-center">
-    <form class="form-inline col-md-8">
+    <form class="form-inline my-2 col-md-8">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 
-    <div class="col-md-4 mybtns">
+    <div class="col-md-4 mybtns btn-group btn-group-toggle">
         {% if user.is_authenticated %}
-        <a href="{% url 'account_email' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">E-MAIL</a>
-        <a href="{% url 'account_logout' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">SIGN OUT</a> {% else %}
-        <a href="{% url 'account_login' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">LOG IN</a>
-        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary my-auto btn-sm" role="button">SIGN UP</a> {% endif %}
+        <a href="{% url 'account_logout' %}" class="btn btn-outline-light mr-auto btn-sm" role="button">SIGN OUT</a> 
+        {% else %}
+        <a href="{% url 'account_login' %}" class="btn btn-outline-light my-auto btn-sm" role="button">LOG IN</a>
+        <a href="{% url 'account_signup' %}" class="btn btn-outline-light my-auto btn-sm" role="button">SIGN UP</a> 
+        {% endif %}
     </div>
 </div>
 
 
 <div class="programs_wrapper" id="programs">
     <h2>Programs</h2>
+    <div class="program_container">
+        <div class="program_row">
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
+            </div>
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'tawhid' %}">Tahwid</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
+            </div>
 
-    <div class="program_row">
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/fiqh.png' %}" alt="Fiqh" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'fiqh' %}">Fiqh</a></h3>
-            </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
-        </div>
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/tawhid.jpeg' %}" alt="Tawhid" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'tawhid' %}">Tahwid</a></h3>
-            </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
-        </div>
-
-    </div>
-
-    <div class="program_row">
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir</a></h3>
-            </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
-        </div>
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'khutba' %}">Khutbahs</a></h3>
-            </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
-        </div>
-    </div>
-
-    <div class="program_row">
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'bayane' %}">Bayane</a></h3>
-            </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
         </div>
 
-        <div class="program_card">
-            <div class="program_head">
-                <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
-                <h3><a href="{% url 'ressourcePage' 'seerah' %}">Seerah</a></h3>
+        <div class="program_row">
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/tafsir.png' %}" alt="Tafsir" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'tafsir' %}">Tafsir</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
             </div>
-            <p class="program_body">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-            </p>
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/khutbahs.jpeg' %}" alt="khutbahs" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'khutba' %}">Khutbahs</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
+            </div>
+        </div>
+
+        <div class="program_row">
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/bayane.jpg' %}" alt="Bayane" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'bayane' %}">Bayane</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
+            </div>
+
+            <div class="program_card">
+                <div class="program_head">
+                    <img src="{% static 'academy/img/seerah.jpg' %}" alt="Seerah" class="program_logo">
+                    <h3><a href="{% url 'ressourcePage' 'seerah' %}">Seerah</a></h3>
+                </div>
+                <p class="program_body">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -175,50 +177,50 @@
     <h1>Playlist Audios</h1>
 
     <div class="container">
-        <div class="playlist_box row">
-            <div class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
+        <div class="playlist_box">
+            <div class="my-3 bg-white rounded shadow-sm">
+               <div class="row mb-3">
+                    <div class="col-md-6 mb-1 text-center">
+                        <div class="audio_title">
+                            <h5>Title</h5>
+                        </div>
+                        <div class="audio_description"> 
+                            <span> Song description </span>
+                        </div>
+                    </div>
+                    <div class="audio-player col-md-6 justify-flex">
+                        <div class="timeline">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="controls">
+                            <div class="play-container">
+                            <div class="toggle-play play">
+                            </div>
+                            </div>
+                            <div class="time">
+                            <div class="current">0:00</div>
+                            <div class="divider">/</div>
+                            <div class="length"></div>
+                            </div>
+                            <div class="name">Music Song</div>
+                        <!--     credit for icon to https://saeedalipoor.github.io/icono/ -->
+                            <div class="volume-container">
+                            <div class="volume-button">
+                                <div class="volume icono-volumeMedium"></div>
+                            </div>
+                            
+                            <div class="volume-slider">
+                                <div class="volume-percentage"></div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-            </div>
-            <div class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-            </div>
-            <div class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i> ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
             </div>
         </div>
     </div>
-</div>
 
 </div>
-<div class="audio_box">
-    <div id="player">
-        <div id="songTitle">Hello World</div>
-        <div id="seek-bar">
-            <div id="fill"></div>
-            <div id="handle"></div>
-        </div>
-        <div id="audio_btns">
-            <button id="pre"><img src="{% static 'academy/img/prev.png' %}" ></button>
-            <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
-            <button id="next"><img src="{% static 'academy/img/next.png' %}"></button>
-        </div>
-    </div>
-</div>
-
 
 {% endblock content %}

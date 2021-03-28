@@ -1,91 +1,89 @@
-{% extends "academy/base.html" %}
-{% load static %}
+{% extends "academy/base.html" %} {% load static %} {% block nav_item %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'aboutUsPage' %}">About Us</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'ressourcePage' 'fiqh' %}">Programs</a>
+</li>
+{% endblock nav_item %} {% block content %}
+<div class="image-view">
 
-{% block nav_item %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'aboutUsPage' %}">About Us</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'ressourcePage' 'fiqh' %}">Programs</a>
-    </li>
-{% endblock nav_item %}
+    <img src="{% static 'academy/img/bg6.jpg' %}" alt="AlAmineAcademy">
+</div>
+<div class="ressource-title">
+    <p>{{program_title}}</p>
+</div>
 
-{% block content %}
-    <div class="image-view">
-   
-        <img src="{% static 'academy/img/bg6.jpg' %}" alt="AlAmineAcademy">
-    </div>
-    <div class="ressource-title">
-        <p>{{program_title}}</p>
-    </div>
-
-    <div class="video-gallery__screen">
-        <div class="video-screen-wrapper">
-            <iframe controls id="video-screen" src="{{video_screen_url}}" style="border:none;" allowfullscreen"></iframe>
+<div class="video-gallery__screen">
+    <div class="video-screen-wrapper">
+        <iframe controls id="video-screen" src="{{video_screen_url}}" style="border:none;" allowfullscreen "></iframe>
         </div>
 
-        <div class="video-gallery">
+        <div class="video-gallery ">
         {% for video in ressource %}
-            <div class="card video-gallery__card">
-                <iframe controls class="box_video video-gallery_box_video" src="{{ video.videoUrl }}" style="border:none;" onclick="drag_up(this)"></iframe>
-                <div class="box_container video-gallery__box_container">
+            <div class="card video-gallery__card ">
+                <div class="iframeDiv ">
+                    <iframe controls class="box_video video-gallery_box_video " src="{{ video.videoUrl }} " style="border:none; "></iframe>
+                    <div class="frameDummy "></div>
+                </div>
+                <div class="box_container video-gallery__box_container ">
                     <h4>{{video.title}}</h4>
                     <hr></hr>
-                    <p class="video_description">{{video.description|truncatewords:10}}</p>
+                    <p class="video_description ">{{video.description|truncatewords:10}}</p>
                 </div>
             </div>
         {% endfor %}
         </div>
  
-        <div class="video-gallery__controls pagination">
+        <div class="video-gallery__controls pagination ">
             {% if ressource.has_previous %}
-                <button class="video_prev"><a href="?page={{ ressource.previous_page_number }}">Prev</a></button>
+                <button class="video_prev "><a href="?page={{ ressource.previous_page_number }} ">Prev</a></button>
             {% else %}
-                <button class="video_prev deactivate"><a href="#">Prev</a></button>
+                <button class="video_prev deactivate "><a href="# ">Prev</a></button>
             {% endif %}
             {% for num in page_num %}
-                <button class="pagination_btn"><a href="?page={{ num }}">{{num}}</a></button>
+                <button class="pagination_btn "><a href="?page={{ num }} ">{{num}}</a></button>
                 {% if num == 3 %}
-                    <button class="pagination_btn pg_btn_activate">...</button>
+                    <button class="pagination_btn pg_btn_activate ">...</button>
                 {% endif %}
             {% endfor %}
             {% if ressource.has_next %}
-                <button class="video_next"><a href="?page={{ ressource.next_page_number }}">Next</a></button>            
+                <button class="video_next "><a href="?page={{ ressource.next_page_number }} ">Next</a></button>            
             {% else %}
-                <button class="video_next deactivate"><a href="#">Next</a></button>
+                <button class="video_next deactivate "><a href="# ">Next</a></button>
             {% endif %}
         </div>
     </div>
 
 
-        <div class="playlist_audio">
+        <div class="playlist_audio ">
         <h1>Playlist Audios</h1>
 
-        <div class="container">
-        <div class="playlist_box row">
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
+        <div class="container ">
+        <div class="playlist_box row ">
+                <div class="list-group-item list-group-item-action ">
+                    <div class="d-flex w-100 justify-content-between ">
+                    <h5 class="mb-1 "><i class="fa fa-play-circle fa-lg "></i>  ... The audio Title ...</h5>
+                    <small class="text-muted ">00:43</small>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
+                    <p class="mb-1 ">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted ">Donec id elit non mi porta.</small>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
+                <div class="list-group-item list-group-item-action ">
+                    <div class="d-flex w-100 justify-content-between ">
+                    <h5 class="mb-1 "><i class="fa fa-play-circle fa-lg "></i>  ... The audio Title ...</h5>
+                    <small class="text-muted ">00:43</small>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
+                    <p class="mb-1 ">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted ">Donec id elit non mi porta.</small>
                 </div>
-                <div class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><i class="fa fa-play-circle fa-lg"></i>  ... The audio Title ...</h5>
-                    <small class="text-muted">00:43</small>
+                <div class="list-group-item list-group-item-action ">
+                    <div class="d-flex w-100 justify-content-between ">
+                    <h5 class="mb-1 "><i class="fa fa-play-circle fa-lg "></i>  ... The audio Title ...</h5>
+                    <small class="text-muted ">00:43</small>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
+                    <p class="mb-1 ">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted ">Donec id elit non mi porta.</small>
                 </div>
             </div>
         </div>
@@ -95,80 +93,80 @@
 
     </div>
 
-    <div class="document-container">
-        <div class="slick_slider">
+    <div class="document-container ">
+        <div class="slick_slider ">
             <!-------Slide 01-------->
             <!----Slider Box---->
 
-            <div class="card document-card bg-light mb-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." height="200">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card document-card bg-light mb-3 " style="width: 18rem; ">
+                <img src="... " class="card-img-top " alt="... " height="200 ">
+                <div class="card-body ">
+                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-btn">
-                    <a class="btn btn-outline-primary btn-sm" href="#" role="button">See</a>
-                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Buy!</a>
+                <div class="card-btn ">
+                    <a class="btn btn-outline-primary btn-sm " href="# " role="button ">See</a>
+                    <a class="btn btn-outline-warning btn-sm " href="# " role="button ">Buy!</a>
                 </div>
             </div>
             <!-------Slide 02-------->
-            <div class="card document-card bg-light mb-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." height="200">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card document-card bg-light mb-3 " style="width: 18rem; ">
+                <img src="... " class="card-img-top " alt="... " height="200 ">
+                <div class="card-body ">
+                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-btn">
-                    <a class="btn btn-outline-primary btn-sm" href="#" role="button">See</a>
-                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Buy!</a>
+                <div class="card-btn ">
+                    <a class="btn btn-outline-primary btn-sm " href="# " role="button ">See</a>
+                    <a class="btn btn-outline-warning btn-sm " href="# " role="button ">Buy!</a>
                 </div>
             </div>
             <!-------Slide 03-------->
-            <div class="card document-card bg-light mb-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." height="200">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card document-card bg-light mb-3 " style="width: 18rem; ">
+                <img src="... " class="card-img-top " alt="... " height="200 ">
+                <div class="card-body ">
+                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-btn">
-                    <a class="btn btn-outline-primary btn-sm" href="#" role="button">See</a>
-                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Buy!</a>
+                <div class="card-btn ">
+                    <a class="btn btn-outline-primary btn-sm " href="# " role="button ">See</a>
+                    <a class="btn btn-outline-warning btn-sm " href="# " role="button ">Buy!</a>
                 </div>
             </div>
             <!-------Slide 04-------->
-            <div class="card document-card bg-light mb-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." height="200">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card document-card bg-light mb-3 " style="width: 18rem; ">
+                <img src="... " class="card-img-top " alt="... " height="200 ">
+                <div class="card-body ">
+                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-btn">
-                    <a class="btn btn-outline-primary btn-sm" href="#" role="button">See</a>
-                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Buy!</a>
+                <div class="card-btn ">
+                    <a class="btn btn-outline-primary btn-sm " href="# " role="button ">See</a>
+                    <a class="btn btn-outline-warning btn-sm " href="# " role="button ">Buy!</a>
                 </div>
             </div>
             <!-------Slide 05-------->
-            <div class="card document-card bg-light mb-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." height="200">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card document-card bg-light mb-3 " style="width: 18rem; ">
+                <img src="... " class="card-img-top " alt="... " height="200 ">
+                <div class="card-body ">
+                    <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="card-btn">
-                    <a class="btn btn-outline-primary btn-sm" href="#" role="button">See</a>
-                    <a class="btn btn-outline-warning btn-sm" href="#" role="button">Buy!</a>
+                <div class="card-btn ">
+                    <a class="btn btn-outline-primary btn-sm " href="# " role="button ">See</a>
+                    <a class="btn btn-outline-warning btn-sm " href="# " role="button ">Buy!</a>
                 </div>
             </div>
 
         </div>
     </div>
 
-<div class="audio_box">
-                <div id="player">
-                    <div id="songTitle">Hello World</div>
-                    <div id="seek-bar">
-                        <div id="fill"></div>
-                        <div id="handle"></div>
+<div class="audio_box ">
+                <div id="player ">
+                    <div id="songTitle ">Hello World</div>
+                    <div id="seek-bar ">
+                        <div id="fill "></div>
+                        <div id="handle "></div>
                     </div>
-                    <div id="audio_btns">
-                        <button id="pre"><img src="{% static 'academy/img/prev.png' %}" height="20px" width="20px"></button>
-                        <button id="play"><img src="{% static 'academy/img/play.png' %}"> </button>
-                        <button id="next"><img src="{% static 'academy/img/next.png' %}" height="20px" width="20px"></button>
+                    <div id="audio_btns ">
+                        <button id="pre "><img src="{% static 'academy/img/prev.png' %} " height="20px " width="20px "></button>
+                        <button id="play "><img src="{% static 'academy/img/play.png' %} "> </button>
+                        <button id="next "><img src="{% static 'academy/img/next.png' %} " height="20px " width="20px "></button>
                     </div>
                 </div>
             </div>

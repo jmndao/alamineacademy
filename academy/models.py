@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 
+from django.contrib.auth.models import User
+
 from PIL import Image
 
 
@@ -13,6 +15,15 @@ from PIL import Image
 #     return '{0}/{1}'.format(instance.file_type, filename)
 
 
+class SupportCollection(models.Model):
+
+    title = models.CharField(max_length=100, blank=False, null=False)
+    slug = models.SlugField(max_length=100)
+
+    def __str__(self):
+        return self.title
+
+
 class SupportSingle(models.Model):
     '''
         A model that hold file by one and link to the SupportsModel in
@@ -22,22 +33,14 @@ class SupportSingle(models.Model):
         -- title        : title of the course
         -- description  : description of the course
     '''
+    title = models.CharField(max_length=50, blank=False, null=False)
+    thumbnail = models.ImageField(upload_to="item/", null=False)    
+    supports_dir = models.FileField(upload_to='supports/', null=True, verbose_name="Supports")
+    name_item = models.ForeignKey(SupportCollection, on_delete=models.CASCADE)
 
-    title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
     
     def __str__(self):
         return self.title
-
-class SupportCollection(models.Model):
-
-    support_single = models.ForeignKey(
-        SupportSingle, on_delete=models.CASCADE, related_name="support"
-    )
-    supports_dir = models.FileField(upload_to='supports/', null=True, verbose_name="Supports")
-
-    def __str__(self):
-        return self.support_single.title
 
 
 class AcademyModel(models.Model):
@@ -63,7 +66,6 @@ class AcademyModel(models.Model):
         ('TAFSIR', 'Tafsir'),
         ('BAYANE', 'Bayane')
     ]
-
     title = models.CharField(max_length=250)
     description = models.TextField(default=None)
     price = models.DecimalField(max_digits=10, decimal_places=6)
@@ -86,6 +88,9 @@ class AcademyModel(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.thumbnail.path)
+
+    
+
 
 class AcademyPublicQuestion(models.Model):
     '''
@@ -228,3 +233,28 @@ class YoutubeVideos(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Audio(models.Model):
+    
+    CATEGORY_TYPE = [
+        ('SEERAH', 'Seerah'),
+        ('TAWHID', 'Tawhid'),
+        ('HADITHS', 'Hadiths'),
+        ('KHUTBA', 'Khutba'),
+        ('FIQH', 'Fiqh'),
+        ('TAFSIR', 'Tafsir'),
+        ('BAYANE', 'Bayane')
+    ]
+
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    url = models.URLField()
+    slug = models.SlugField()
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPE)
+    
+    def __str__(self):
+        return self.title
+
+    
+    

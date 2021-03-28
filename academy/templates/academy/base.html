@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/course.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/ressource.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'academy/css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'academy/css/audio.css' %}" />
 </head>
 
 <body>
@@ -37,7 +38,7 @@
         </div>
     </div>
     {% if not courses.this_page %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img class="mylogo" src="{% static 'academy/img/logo.png' %}" alt=AlAmineAcademy">
         </a>
@@ -100,9 +101,43 @@
     </div>
     {% block content %}{% endblock content %}
 
-    <footer class="bottom_line">
-
-    </footer>
+    <footer class="pt-4 pt-md-5 border-top footer bottom_line">
+    <div class="row container">
+      <div class="col-12 col-md">
+        <img class="footer_img mb-2" src="{% static 'academy/img/logo.png' %}" alt="Sama Keur" width="90" height="90">
+      </div>
+      <div class="col-6 col-md">
+        <h5>Coordonées</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Dakar, ST</a></li>
+          <li><a class="text-muted" href="#">Street 1, Villa 3434</a></li>
+          <li><a class="text-muted" href="#">info@alaminacademy.sn</a></li>
+          <hr class="divider_hr">
+          <li>+221 77 640 XX XX (Senegal)</li>
+          <li>+221 77 640 XX XX (Senegal)</li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Menu</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Home</a></li>
+          <li><a class="text-muted" href="#">About</a></li>
+          <li><a class="text-muted" href="#">Services</a></li>
+          <li><a class="text-muted" href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Partners</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Alfka Interior</a></li>
+          <li><a class="text-muted" href="#">FIELD DESIGNS</a></li>
+          <li><a class="text-muted" href="#">Roof § Casa</a></li>
+          <li><a class="text-muted" href="#">Home.co</a></li>
+          <li><a class="text-muted" href="#">Audio Wares</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -113,6 +148,7 @@
     <script type="text/javascript" src="{% static 'academy/js/script.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/ressource.js' %}"></script>
     <script type="text/javascript" src="{% static 'academy/js/qa.js' %}"></script>
+    <script type="text/javascript" src="{% static 'academy/js/audio.js' %}"></script>
 
 </body>
 

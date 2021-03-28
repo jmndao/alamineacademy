@@ -9,7 +9,7 @@
 .about_us_section {
     position: relative;
     width: 100%;
-    height: 720px;
+    height: 40rem;
     background-color: #2c3e50;
 }
 
@@ -19,12 +19,12 @@
 
 .about_us_video_section img {
     width: 100%;
-    height: 720px;
+    height: 40rem;
 }
 
 #play_video_img {
-    height: 8vh;
-    width: 8vh;
+    height: 1.8rem;
+    width: 1.8rem;
     cursor: pointer;
 }
 
@@ -36,15 +36,15 @@
 }
 
 #play_video_img:hover {
-    height: 9vh;
-    width: 9vh;
+    height: 2rem;
+    width: 2rem;
     transition: all 200ms ease-in-out;
 }
 
 .about_us_video_section {
     position: relative;
     width: 100%;
-    height: 720px;
+    height: 40rem;
 }
 
 #about_us_video {
@@ -61,10 +61,10 @@
 .about_us_head h2,
 .daily_hadith_section h1,
 .playlist_audio h1 {
-    margin-top: 30px;
+    margin-top: 2.2rem;
     text-align: center;
     color: #2c3e50;
-    height: 100px;
+    height: 2.8rem;
     font-size: 50px;
     width: 100%;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
@@ -75,7 +75,7 @@
 
 .image-view img {
     width: 100%;
-    height: 600px;
+    height: 40rem;
 }
 
 .note_wrapper {
@@ -92,7 +92,7 @@
 }
 
 .text_note {
-    font-size: 18px;
+    font-size: .8rem;
     width: 60%;
     padding: 20px 30px;
     background-color: #eee;
@@ -100,8 +100,8 @@
 }
 
 .image_note img {
-    width: 200px;
-    height: 200px;
+    width: 5rem;
+    height: 5rem;
 }
 
 .text_note:hover {
@@ -116,7 +116,7 @@
 }
 
 .staff_member .row .card {
-    margin: 10px 15px;
+    margin: 1rem 1.5rem;
 }
 
 .staff_member .row img {
@@ -127,18 +127,7 @@
 /*-------------------------------------------*/
 
 @media screen and (max-width: 600px) {
-    .about_us_section,
-    .about_us_video_section img {
-        height: 300px;
-    }
-    #play_video_img {
-        height: 5vh;
-        width: 5vh;
-    }
-    #play_video_img:hover {
-        height: 5vh;
-        width: 5vh;
-        transition: none;
+
     }
     .daily_hadith_section h1,
     .playlist_audio h1 {
@@ -146,10 +135,7 @@
         height: 50px;
         font-size: 25px;
     }
-    .image-view img {
-        width: 100%;
-        height: 400px;
-    }
+    
     .about_us_head h2 {
         font-size: 25px;
         height: 50px;

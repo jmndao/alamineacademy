@@ -11,28 +11,13 @@ function playPause(i) {
     }
 
 }
-/*------------ JS for navigation Bar --------------*/
+/*------------ JS for video_gallery in ressource-file --------------*/
+var bigScreen = document.getElementById('video-screen');
 
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.topnav');
-    const nav_link = document.querySelectorAll('.nav-link');
-
-    burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-
-        // Animate links
-        nav_link.forEach((link, ind) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${ind / 5 + 0.3}s`
-            }
-        });
-
-        // Animate burger
-        burger.classList.toggle('toggle');
+[...document.querySelectorAll('.frameDummy')].forEach(function(item) {
+    item.addEventListener('click', function() {
+        var src_to_play = item.previousElementSibling.src;
+        console.log(src_to_play);
+        bigScreen.src = src_to_play;
     });
-}
-
-navSlide();
+});

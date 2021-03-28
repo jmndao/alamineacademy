@@ -51,12 +51,20 @@
     justify-content: center;
 }
 
-
-/* .video-gallery__card {
-    margin: 10px 10px important!;
+.iframeDiv {
+    position: relative;
 }
 
-.video-gallery__box_container {
+.frameDummy {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+
+/*.video-gallery__box_container {
     margin-bottom: 10px;
 } */
 

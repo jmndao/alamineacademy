@@ -153,7 +153,7 @@ def courseView(request):
 def aboutUs(request):
     return render(request, 'academy/aboutUs.html', context={})
 
-    
+@login_required
 def qa(request):
     return render(request, 'academy/qa.html', context={"nav": True})
 

@@ -151,18 +151,10 @@
                     <!--------------------Actual Content----------------------------->
 
                     <div class="jumbotron">
-                        <div class="course_image-view">
-                            <img src="{% static 'academy/img/bg4.jpg' %}" alt="AlAmineAcademy">
-                        </div>
                         <h1 class="display-4">La Vie du Prophète</h1>
                         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                         <hr class="my-4">
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                    </div>
-
-                    <div id="section-course-description">
-                        <div class="course-description">
-                            <div class="explanation">
+                        <div class="explanation">
                                 <h3>Explanation: </h3>
                                 <p>
                                     {{feed00.description}}
@@ -174,130 +166,94 @@
                                 <p> And for 24 days </p>
                                 <p> Averall: {{feed00.price}}$</p>
                             </div>
-                        </div>
-                        <div class="course-presentation">
-                            <img src=" {{feed00.thumbnail.url}}" alt="">
-                        </div>
-
                     </div>
 
                     <div class="view-others">
                         <h3>Others</h3>
-                        <ul id="courses">
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
+                        <div class="container">
+
+                            <div class="row mb-2">
+                                <div class="col-md-10">
+                                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <h3 class="mb-0">Document-01</h3>
+                                            <p class="card-text mb-4">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                            <li class="list-group-item mb-2 d-flex justify-content-between">
+                                                <span>Total (USD)</span>
+                                                <strong>$20</strong>
+                                            </li>
+                                            <div class="">
+                                                <a href="#" class="btn btn-dark btn-sm " role="button" aria-pressed="true">Buy Now</a>
+                                                <a href="#" class="btn btn-outline-dark btn-sm " role="button" aria-pressed="true">Add to Cart</a> </div>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-10">
+                                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <h3 class="mb-0">Document-01</h3>
+                                            <p class="card-text mb-4">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                            <li class="list-group-item mb-2 d-flex justify-content-between">
+                                                <span>Total (USD)</span>
+                                                <strong>$20</strong>
+                                            </li>
+                                            <div class="">
+                                                <a href="#" class="btn btn-dark btn-sm " role="button" aria-pressed="true">Buy Now</a>
+                                                <a href="#" class="btn btn-outline-dark btn-sm " role="button" aria-pressed="true">Add to Cart</a> </div>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-10">
+                                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <h3 class="mb-0">Document-01</h3>
+                                            <p class="card-text mb-4">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                            <li class="list-group-item mb-2 d-flex justify-content-between">
+                                                <span>Total (USD)</span>
+                                                <strong>$20</strong>
+                                            </li>
+                                            <div class="">
+                                                <a href="#" class="btn btn-dark btn-sm " role="button" aria-pressed="true">Buy Now</a>
+                                                <a href="#" class="btn btn-outline-dark btn-sm " role="button" aria-pressed="true">Add to Cart</a> </div>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                        </div>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
-                                </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
-                                </div>
-                            </li>
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
-                                </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
-                                </div>
-                            </li>
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
-                                </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
-                                </div>
-                            </li>
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
-                                </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
-                                </div>
-                            </li>
-                            <li class="course-item">
-                                <div class="course-doc">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="course-desc">
-                                    <p class="course-desc-title">Document-01</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad iusto animi rem inventore? Dignissimos alias repellat deleniti sint. Nobis animi nostrum cupiditate sunt nemo deserunt reprehenderit? Necessitatibus,
-                                        blanditiis. Ea.
-                                    </p>
-                                </div>
-                                <div class="course-offer">
-                                    <p>Price: $10.11</p>
-                                    <button class="take-btn"><a href="#">Take</a></button>
-                                    <button class="see-btn"><a href="#">See</a></button>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+
+                        </div>
                     </div>
+                </div>
 
-                    <!--------------------End Of Actual Content----------------------------->
+                <!--------------------End Of Actual Content----------------------------->
             </main>
-            </div>
         </div>
+    </div>
 
-        <footer class="bottom_line">
+    <footer class="bottom_line">
 
-        </footer>
-
-
+    </footer>
 
 
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="{% static 'academy/bootstrap/js/bootstrap.min.js' %}"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'academy/bootstrap/js/bootstrap.min.js' %}"></script>
 
 </body>
 
