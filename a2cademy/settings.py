@@ -134,14 +134,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# Handling media directories 
-
+MEDIA_URL = '/media/'
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
-MEDIA_URL   = '/media/'
 
 
 SITE_ID = 1

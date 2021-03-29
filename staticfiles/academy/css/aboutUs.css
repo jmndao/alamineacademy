@@ -1,0 +1,163 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+/*-----------------------------------------------*/
+
+.about_us_section {
+    position: relative;
+    width: 100%;
+    height: 40rem;
+    background-color: #2c3e50;
+}
+
+.about_us_presentation {
+    position: relative;
+}
+
+.about_us_video_section img {
+    width: 100%;
+    height: 40rem;
+}
+
+#play_video_img {
+    height: 1.8rem;
+    width: 1.8rem;
+    cursor: pointer;
+}
+
+#play_video_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#play_video_img:hover {
+    height: 2rem;
+    width: 2rem;
+    transition: all 200ms ease-in-out;
+}
+
+.about_us_video_section {
+    position: relative;
+    width: 100%;
+    height: 40rem;
+}
+
+#about_us_video {
+    position: abosolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/*-----------------------------------------------*/
+
+.about_us_head h2,
+.daily_hadith_section h1,
+.playlist_audio h1 {
+    margin-top: 2.2rem;
+    text-align: center;
+    color: #2c3e50;
+    height: 2.8rem;
+    font-size: 50px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/*-----------------------------------------------*/
+
+.image-view img {
+    width: 100%;
+    height: 40rem;
+}
+
+.note_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.note_1,
+.note_2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.text_note {
+    font-size: .8rem;
+    width: 60%;
+    padding: 20px 30px;
+    background-color: #eee;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+}
+
+.image_note img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.text_note:hover {
+    background-color: #2c3e50;
+    color: #eee;
+    transition: all 400ms ease-in-out;
+}
+
+.staff_member .row {
+    width: 100%;
+    justify-content: center;
+}
+
+.staff_member .row .card {
+    margin: 1rem 1.5rem;
+}
+
+.staff_member .row img {
+    width: 100%;
+}
+
+
+/*-------------------------------------------*/
+
+@media screen and (max-width: 600px) {
+
+    }
+    .daily_hadith_section h1,
+    .playlist_audio h1 {
+        margin-top: 20px;
+        height: 50px;
+        font-size: 25px;
+    }
+    
+    .about_us_head h2 {
+        font-size: 25px;
+        height: 50px;
+        margin-top: 15px;
+    }
+    .note_1,
+    .note_2 {
+        margin: 20px 0;
+    }
+    .text_note {
+        font-size: 13px;
+        width: 80%;
+        padding: 10px 15px;
+    }
+    .image_note img {
+        /* width: 100px;
+        height: 100px; */
+        display: none;
+    }
+    .text_note:hover {
+        background-color: unset;
+        color: unset;
+        transform: unset;
+    }
+}

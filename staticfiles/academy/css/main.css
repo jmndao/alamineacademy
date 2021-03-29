@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* The navigation menu */
+
+.mylogo {
+    width: 7vh;
+    height: 7vh;
+}
+
+
+/*------------------------------------------------*/
+
+
+/* Style the header: fixed position (always stay at the top) */
+
+.header {
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    background-color: #2c3e50;
+}
+
+
+/* The progress container (grey background) */
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #eee;
+}
+
+
+/* The progress bar (scroll indicator) */
+
+.progress-bar {
+    height: 5px;
+    background: #243342;
+    width: 0%;
+}
+
+
+/*------------------------------------------------*/
+
+.research_bar {
+    height: auto;
+    width: 100%;
+    background-color: #2c3e50;
+    margin-left: 0;
+    padding: 5px;
+}
+
+.research_bar .form-inline {
+    justify-content: center;
+}
+
+.research_bar .form-inline .form-control {
+    width: 70%;
+}
+
+.research_bar .mybtns {
+    text-align: right;
+    margin: auto auto;
+}
+
+
+/* ----------------------------------------------- */
+
+.programs_wrapper h2 {
+    margin-top: 1rem;
+    text-align: center;
+    color: #2c3e50;
+    height: 4rem;
+    font-size: 50px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.program_logo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50% 50%;
+    padding: 3px 3px;
+}
+
+.program_container {
+    margin: 2rem 0;
+}
+
+.program_row {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem .8rem;
+}
+
+.program_head {
+    display: flex;
+    align-items: center;
+}
+
+.program_card {
+    width: 34rem;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+.program_card:hover {
+    transition: box-shadow 300ms ease-in;
+    background-color: #eee;
+    box-shadow: 0 1rem 1.1rem rgba(0, 0, 0, 0.3);
+    color: #2c3e50;
+}
+
+.program_head h3 {
+    width: 50%;
+    text-align: center;
+}
+
+.program_head a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.program_head a:hover {
+    color: rgb(224, 145, 42);
+    transition: color 300ms ease-in-out;
+}
+
+
+/* ----------------------------------------------- */
+
+.about_us_see_more {
+    padding: 10px 0px;
+    color: #000;
+    background-color: #eee;
+}
+
+.about_us_see_more a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.about_us_see_more p {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.about_us_see_more a:hover {
+    font-weight: 800;
+    transition: all 400ms ease-in-out;
+}
+
+.about_us_head_index {
+    width: 100%;
+    height: 90px;
+    color: #eee;
+    background-color: #2c3e50;
+}
+
+.about_us_head h3 {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 10px;
+}
+
+
+/* ----------------------------------------------- */
+
+.my_container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    background-color: #2c3e50;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.box {
+    width: 300px;
+    height: 250px;
+    background-color: white;
+    box-shadow: 2px 10px 12px rgba(0, 0, 0, .1);
+    margin: 0 10px;
+    position: relative;
+}
+
+.box_video {
+    width: 100%;
+}
+
+.box .title {
+    color: #243342;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+
+.video_description {
+    text-align: left;
+    color: #243342;
+    font-size: 14px;
+}
+
+.slick_slider {
+    width: 90%;
+    /* background-color: #2c3e50; */
+}
+
+
+/*-----------------------------------*/
+
+.mycard {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: white;
+    margin: auto 10px;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+
+.mycard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/* Add some padding inside the card container */
+
+.box_container {
+    padding: 2px 16px;
+}
+
+
+/* Bootstrap card - adjusting the heading */
+
+.box_container h4 {
+    font-size: 16px;
+}
+
+
+/**----------------------------------------*/
+
+.daily_hadith_section {
+    margin: 20px 0px;
+}
+
+.daily_hadith_section h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.hadith_section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.hadith_text,
+.hadith_document {
+    width: 46%;
+    height: 250px;
+    background-color: #eee;
+    overflow: hidden;
+}
+
+
+/*----------------------------------------*/
+
+.top_container02 h1 {
+    background-color: #2c3e50;
+    margin-top: 30px;
+    text-align: center;
+    color: #eee;
+    height: 100px;
+    font-size: 50px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/*---------------------------------------*/
+
+.playlist_audio h1 {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.playlist_box {
+    width: 100%;
+    height: auto;
+}
+
+
+/*--------------------------------------*/
+
+.bottom_line {
+    height: auto;
+    background-color: #2c3e50;
+    margin-top: 1rem;
+}
+
+.bottom_line h5 {
+    color: #fff;
+}
+
+.footer_img {
+  margin-top: 20%;
+  margin-left: 2rem;
+}
+.divider_hr {
+  background-color: #eee;
+  width: 50%;
+  height: .15rem;
+}
+.bottom_line li, .bottom_line .text-muted  {
+    color: #eee;
+}
+
+
+/* $$$$$$$$$$$$ Phone Scree $$$$$$$$$$$$$$ */
+
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+
+
+/*------ Body: -------*/
+
+@media screen and (max-width: 800px) {
+    .research_bar {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .research_bar form {
+        padding: 10px 5px;
+        width: 90%;
+    }
+    .research_bar input[type="text"] {
+        height: 30px;
+        width: 100%;
+        border-radius: none;
+    }
+    .qux {
+        display: flex;
+        margin: 5px 15px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .programs_wrapper h2 {
+        height: 50px;
+        font-size: 25px;
+    }
+    .program_row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px;
+    }
+    .program_card {
+        width: 90%;
+        margin: 10px 0;
+    }
+    .program_head a {
+        font-size: 20px;
+    }
+    .program_logo {
+        width: 70px;
+        height: 70px;
+    }
+    .about_us_head_index {
+        height: 50px;
+    }
+    .about_us_head h3 {
+        font-size: 25px;
+    }
+    .program_card:hover {
+        background-color: none;
+    }
+    .hadith_section {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .hadith_text,
+    .hadith_document {
+        width: 100%;
+        margin: 5px auto;
+    }
+    .playlist_audio {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .top_container02 h1 {
+        height: 50px;
+        font-size: 25px;
+    }
+    .playlist_box #playlist,
+    .playlist_box .audio_box {
+        float: none;
+        width: 100%;
+    }
+    #image img {
+        height: 200px;
+        width: 70%;
+        text-align: center;
+    }
+    .imageHolder img {
+        height: 250px;
+        width: 100%;
+    }
+    .research_bar .form-inline .form-control {
+        width: 70%;
+        margin-right: 5%;
+    }
+    .research_bar .form-inline {
+        margin: 0 auto;
+    }
+    .research_bar .mybtns {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}

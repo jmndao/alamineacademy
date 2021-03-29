@@ -1,0 +1,299 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-size: .875rem;
+}
+
+.heading-title {
+    margin-top: 10px;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    font-size: 30px;
+}
+
+#course-title,
+.course-hour p {
+    padding-left: 10px;
+}
+
+.sign-up {
+    text-align: center;
+}
+
+
+/* .course-description,
+.course-presentation {
+    float: left;
+} */
+
+.course-presentation {
+    width: 200px;
+    height: 200px;
+    background-color: #000;
+    margin: 0 auto;
+}
+
+.course-description {
+    width: 70%;
+    background-color: #eee;
+    color: #2c3e50;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+#section-course-description {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    color: #eee;
+    /* padding: 10px 30px; */
+    line-height: 30px;
+    border: none;
+    border-radius: 25px 20px 20px 25px;
+    background: #2c3e50;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#section-course-description {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+/* #section-course-description {
+    clear: both;
+    content: "";
+    display: block;
+} */
+
+.explanation p {
+    padding-left: 10px;
+}
+
+.view-others {
+    width: 90%;
+    margin: 40px auto;
+    height: auto;
+    padding: 20px 10px;
+}
+
+.view-others h3 {
+    font-size: 30px;
+}
+
+#courses {
+    margin: 10px 20px;
+}
+
+#courses li {
+    list-style: none;
+}
+
+.course-item {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-item .course-doc {
+    width: 150px;
+    height: 150px;
+    background-color: bisque;
+}
+
+.course-item .course-desc {
+    width: 65%;
+}
+
+.course-desc-title {
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.course-item .course-offer {
+    line-height: 30px;
+}
+
+.course-offer p {
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.course-offer button {
+    padding: 5px 15px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.course-offer .take-btn {
+    background-color: #2c3e50;
+}
+
+.course-offer .see-btn {
+    background-color: orange;
+}
+
+.course-offer .take-btn a {
+    color: #eee;
+}
+
+.course-offer .see-btn a {
+    color: #2c3e50;
+}
+
+.course-offer button a {
+    text-decoration: none;
+}
+
+
+/***********************************************/
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+
+/*
+   * Sidebar
+   */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    /* Behind the navbar */
+    padding: 48px 0 0;
+    /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 5rem;
+    }
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+
+/*
+   * Navbar
+   */
+
+.navbar-brand.course_page {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler.course_page {
+    top: .25rem;
+    right: 1rem;
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+
+/***** Adding cSS to Actual content ******/
+
+.jumbotron {
+    position: relative;
+}
+
+.course_image-view img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .4;
+}
+
+.navbar.navbar-dark {
+    background-color: #2c3e50;
+}
+
+@media screen and (max-width: 600px) {
+    #section-course-description {
+        font-size: .75rem;
+    }
+    #section-course-description h3 {
+        font-size: 1rem;
+    }
+}
+
+
+/***********************************************/
