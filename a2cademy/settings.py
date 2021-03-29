@@ -31,7 +31,7 @@ SECRET_KEY = '6#%vkrt=p5#hd1e!yxu0a=%8g@r5x=ca+(4dohl6j#u8glb%gs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['192.168.1.75', '127.0.0.1', 'https://alamineacademy.herokuapp.com/']
+ALLOWED_HOSTS = ['192.168.1.75', '127.0.0.1', 'alamineacademy.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
